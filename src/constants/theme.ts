@@ -23,4 +23,4 @@ export const CAT_BG: Record<string, string> = {
 export const sp = 'cubic-bezier(0.34,1.56,0.64,1)';
 export const sm = 'cubic-bezier(0.25,0.46,0.45,0.94)';
 
-export const WA = '919999999999';
+export const WA = '918688778482';
