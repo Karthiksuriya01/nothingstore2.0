@@ -15,10 +15,10 @@ export const CATS_META: CategoryMeta[] = [
 ];
 
 export const BANNERS: Banner[] = [
-    { grad: 'linear-gradient(135deg,#15803D,#22C55E)', tag: 'Car Care', title: 'Liqui Moly Range', sub: "Germany's best engine oils", icon: 'Droplets' },
-    { grad: 'linear-gradient(135deg,#166534,#16A34A)', tag: 'Additives', title: 'Fuel & Engine Care', sub: 'Protect your engine today', icon: 'FlaskConical' },
-    { grad: 'linear-gradient(135deg,#713F12,#CA8A04)', tag: 'Tools', title: 'Taparia & 3M Tools', sub: 'Pro-grade at fair prices', icon: 'Wrench' },
-    { grad: 'linear-gradient(135deg,#7C2D12,#EA580C)', tag: 'Dry Fruits', title: 'Fresh Dry Fruits', sub: 'Premium cashews, walnuts & more', icon: 'Leaf' },
+    { grad: 'linear-gradient(135deg,#15803D,#22C55E)', tag: 'Car Care', title: 'Liqui Moly Range', sub: "Germany's best engine oils", icon: 'Droplets', image: '/banner/liquimoly.png' },
+    { grad: 'linear-gradient(135deg,#166534,#16A34A)', tag: 'Additives', title: 'Fuel & Engine Care', sub: 'Protect your engine today', icon: 'FlaskConical', image: '/banner/liquimolyimage2.png' },
+    { grad: 'linear-gradient(135deg,#713F12,#CA8A04)', tag: 'Tools', title: 'Taparia & 3M Tools', sub: 'Pro-grade at fair prices', icon: 'Wrench', image: '/banner/tools.png' },
+    { grad: 'linear-gradient(135deg,#7C2D12,#EA580C)', tag: 'Dry Fruits', title: 'Fresh Dry Fruits', sub: 'Premium cashews, walnuts & more', icon: 'Leaf', image: '/banner/dryfruits.png' },
 ];
 
 export const CAT_SUBS: Record<string, SubCategory[]> = {

@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-
-import * as LucideIcons from 'lucide-react';
 import { sm } from '../constants/theme';
 import { BANNERS } from '../data/categories';
 import { useInterval } from '../hooks/useInterval';
@@ -19,34 +17,61 @@ export default function Carousel() {
                 transition: `transform .58s ${sm}`,
                 transform: `translateX(-${idx * 100}%)`,
             }}>
-                {BANNERS.map((b, i) => {
-                    const IconComp = (LucideIcons as unknown as Record<string, React.ElementType>)[b.icon];
-                    return (
-                        <div key={i} style={{
-                            minWidth: '100%', height: '100%', background: b.grad,
-                            position: 'relative', flexShrink: 0,
-                            display: 'flex', alignItems: 'center', padding: '0 28px', overflow: 'hidden',
-                        }}>
-                            <div style={{ position: 'absolute', right: -40, top: -40, width: 180, height: 180, borderRadius: '50%', background: 'rgba(255,255,255,.07)' }} />
-                            <div style={{ position: 'absolute', right: 24, top: '50%', transform: 'translateY(-50%)', filter: 'drop-shadow(0 8px 20px rgba(0,0,0,.18))' }}>
-                                {IconComp && <IconComp size={72} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />}
-                            </div>
-                            <div style={{ position: 'relative', zIndex: 1 }}>
-                                <span style={{ fontSize: 10, fontWeight: 700, background: 'rgba(255,255,255,.2)', color: '#fff', borderRadius: 20, padding: '3px 11px', letterSpacing: .8, textTransform: 'uppercase' }}>{b.tag}</span>
-                                <p style={{ fontSize: 22, fontWeight: 800, color: '#fff', letterSpacing: '-0.7px', marginTop: 10, lineHeight: 1.2, maxWidth: 195 }}>{b.title}</p>
-                                <p style={{ fontSize: 13, color: 'rgba(255,255,255,.72)', marginTop: 6, maxWidth: 175, lineHeight: 1.5 }}>{b.sub}</p>
-                            </div>
+                {BANNERS.map((b, i) => (
+                    <div key={i} style={{
+                        minWidth: '100%', height: '100%', background: b.grad,
+                        position: 'relative', flexShrink: 0,
+                        display: 'flex', alignItems: 'center', padding: '0 24px', overflow: 'hidden',
+                    }}>
+                        {/* decorative circle */}
+                        <div style={{ position: 'absolute', right: -30, top: -30, width: 180, height: 180, borderRadius: '50%', background: 'rgba(255,255,255,.08)' }} />
+
+                        {/* banner image on the right */}
+                        {b.image && (
+                            <img
+                                src={b.image}
+                                alt={b.title}
+                                style={{
+                                    position: 'absolute',
+                                    right: 0,
+                                    bottom: 0,
+                                    height: '100%',
+                                    width: '52%',
+                                    objectFit: 'cover',
+                                    objectPosition: 'center top',
+                                    maskImage: 'linear-gradient(to left, rgba(0,0,0,0.9) 60%, transparent 100%)',
+                                    WebkitMaskImage: 'linear-gradient(to left, rgba(0,0,0,0.9) 60%, transparent 100%)',
+                                    pointerEvents: 'none',
+                                }}
+                            />
+                        )}
+
+                        {/* text on the left */}
+                        <div style={{ position: 'relative', zIndex: 1, maxWidth: '54%' }}>
+                            <span style={{
+                                fontSize: 10, fontWeight: 700, background: 'rgba(255,255,255,.22)',
+                                color: '#fff', borderRadius: 20, padding: '3px 11px',
+                                letterSpacing: .8, textTransform: 'uppercase',
+                            }}>{b.tag}</span>
+                            <p style={{
+                                fontSize: 21, fontWeight: 800, color: '#fff',
+                                letterSpacing: '-0.7px', marginTop: 10, lineHeight: 1.22,
+                            }}>{b.title}</p>
+                            <p style={{
+                                fontSize: 12.5, color: 'rgba(255,255,255,.75)',
+                                marginTop: 6, lineHeight: 1.5,
+                            }}>{b.sub}</p>
                         </div>
-                    );
-                })}
+                    </div>
+                ))}
             </div>
 
-            {/* Dot indicators */}
-            <div style={{ position: 'absolute', bottom: 14, left: 28, display: 'flex', gap: 6 }}>
+            {/* dot indicators */}
+            <div style={{ position: 'absolute', bottom: 14, left: 24, display: 'flex', gap: 6 }}>
                 {BANNERS.map((_, i) => (
                     <div key={i} onClick={() => setIdx(i)} style={{
                         width: i === idx ? 22 : 6, height: 6, borderRadius: 10,
-                        background: i === idx ? '#fff' : 'rgba(255,255,255,.35)',
+                        background: i === idx ? '#fff' : 'rgba(255,255,255,.38)',
                         transition: `width .35s ${sm}`, cursor: 'pointer',
                     }} />
                 ))}

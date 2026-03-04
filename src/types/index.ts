@@ -30,6 +30,7 @@ export interface Banner {
   title: string;
   sub: string;
   icon: string; // lucide icon name
+  image?: string; // optional banner image from /public/banner/
 }
 
 export interface SubCategory {
