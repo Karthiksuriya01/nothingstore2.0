@@ -94,11 +94,16 @@ export default function App() {
       )}
 
       {/* SCROLLABLE CONTENT AREA */}
-      <div style={{
+      <div style={isProd ? {
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'hidden',     /* ProductScreen handles its own scroll */
+      } : {
         flex: 1,
         overflowY: 'auto',
         overflowX: 'hidden',
-        paddingBottom: isProd ? 0 : totalQty > 0 ? 140 : 80,
+        paddingBottom: totalQty > 0 ? 140 : 80,
         WebkitOverflowScrolling: 'touch',
       } as React.CSSProperties}>
 
@@ -126,6 +131,7 @@ export default function App() {
             opacity: vis ? 1 : 0,
             transform: vis ? 'translateY(0)' : 'translateY(12px)',
             transition: `opacity .22s ${sm}, transform .22s ${sm}`,
+            ...(isProd ? { flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' } : {}),
           }}>
             {screen === 'home' && (
               <HomeScreen
@@ -149,6 +155,7 @@ export default function App() {
                 p={selP} cart={cart} addToCart={addToCart} dec={dec}
                 onBack={() => go(activeCat ? 'cat' : 'home', activeCat)}
                 onGoCart={() => { addToCart(selP.id); go('cart'); }}
+                onOpen={p => { setSelP(p); go('product'); }}
               />
             )}
 
