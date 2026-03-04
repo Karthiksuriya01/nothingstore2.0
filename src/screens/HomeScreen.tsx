@@ -28,7 +28,7 @@ export default function HomeScreen({ cart, addToCart, dec, floatMap, onCat, onOp
                 <Label text="All Products" />
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 13, marginTop: 14 }}>
                     {PRODUCTS.map((p, i) => (
-                        <div key={p.id} style={{ animation: `fadeUp .3s ${sm} ${i * .025}s both` }}>
+                        <div key={p.id} style={{ animation: `fadeUp .3s ${sm} ${i * .025}s both`, display: 'flex', flexDirection: 'column' }}>
                             <GridCard p={p} cart={cart} addToCart={addToCart} dec={dec} floatMap={floatMap} onOpen={() => onOpen(p)} />
                         </div>
                     ))}

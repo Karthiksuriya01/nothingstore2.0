@@ -79,7 +79,7 @@ export default function CategoryScreen({ cat, products, cart, addToCart, dec, fl
                     ? <p style={{ textAlign: 'center', color: C.textLight, fontSize: 14, padding: '40px 0' }}>No products here yet</p>
                     : <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
                         {filtered.map((p, i) => (
-                            <div key={p.id} style={{ animation: `fadeUp .25s ${sm} ${i * .04}s both` }}>
+                            <div key={p.id} style={{ animation: `fadeUp .25s ${sm} ${i * .04}s both`, display: 'flex', flexDirection: 'column' }}>
                                 <CatGridCard p={p} cart={cart} addToCart={addToCart} dec={dec} floatMap={floatMap} onOpen={() => onOpen(p)} />
                             </div>
                         ))}
