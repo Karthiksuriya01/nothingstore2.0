@@ -16,8 +16,8 @@ export default function Carousel() {
 
     return (
         <div style={{
-            margin: '18px 18px 0', borderRadius: 24, overflow: 'hidden',
-            position: 'relative', height: 190, boxShadow: `0 8px 30px rgba(21,128,61,.18)`,
+            margin: '0px 0px 0', borderRadius: 0, overflow: 'hidden',
+            position: 'relative', height: 190,
         }}>
             {/* Keyframe animations injected inline */}
             <style>{`
