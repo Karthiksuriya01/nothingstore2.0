@@ -1,6 +1,5 @@
-import React from 'react';
 import { Home, Store, ShoppingCart, Lightbulb } from 'lucide-react';
-import { C, sm, sp } from '../constants/theme';
+import { C, sp } from '../constants/theme';
 import type { Screen } from '../types';
 
 interface BottomNavProps {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChevronLeft, Star, ArrowRight, Plus, Minus } from 'lucide-react';
-import { C, CAT_BG, sm } from '../constants/theme';
+import { C, CAT_BG } from '../constants/theme';
 import { disc } from '../data/products';
 import type { Product, CartState } from '../types';
 import ProductImage from '../components/ProductImage';

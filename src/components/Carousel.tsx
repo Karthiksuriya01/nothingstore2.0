@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+
 import * as LucideIcons from 'lucide-react';
 import { sm } from '../constants/theme';
 import { BANNERS } from '../data/categories';

@@ -1,6 +1,5 @@
-import React from 'react';
 import { ShoppingCart, ArrowRight } from 'lucide-react';
-import { C, sm, sp } from '../constants/theme';
+import { C, sp } from '../constants/theme';
 
 interface FloatingCartBarProps {
     totalQty: number;

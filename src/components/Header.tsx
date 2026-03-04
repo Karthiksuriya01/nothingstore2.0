@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { ShoppingCart, Search, X } from 'lucide-react';
 import { C, sm } from '../constants/theme';
 

@@ -23,7 +23,7 @@ export default function CategoryScreen({ cat, products, cart, addToCart, dec, fl
     const filtered = sub === 'all' ? products : products.filter(p => p.sub === sub);
 
     return (
-        <div style={{ display: 'flex', height: 'calc(100vh - 130px)', overflow: 'hidden' }}>
+        <div style={{ display: 'flex', height: '100%', minHeight: '60vh', overflow: 'hidden' }}>
             {/* LEFT SIDEBAR */}
             <div style={{ width: 86, background: '#F0FAF4', borderRight: `1px solid ${C.border}`, overflowY: 'auto', flexShrink: 0 }}>
                 {subs.map(s => {

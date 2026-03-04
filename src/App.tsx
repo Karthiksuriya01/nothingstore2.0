@@ -75,9 +75,13 @@ export default function App() {
     <div style={{
       fontFamily: "'Inter',-apple-system,sans-serif",
       maxWidth: 430, margin: '0 auto',
-      background: C.bg, minHeight: '100vh', overflowX: 'hidden',
+      background: C.bg,
+      height: '100dvh',
+      display: 'flex',
+      flexDirection: 'column',
+      position: 'relative',
     }}>
-      {/* STICKY HEADER */}
+      {/* PINNED HEADER — never scrolls */}
       {!isProd && (
         <Header
           totalQty={totalQty}
@@ -89,68 +93,77 @@ export default function App() {
         />
       )}
 
-      {/* SEARCH RESULTS */}
-      {!isProd && search.length > 1 && (
-        <div style={{ background: C.bg, padding: '14px 18px 120px', animation: `fadeUp .2s ${sm}` }}>
-          <p style={{ fontSize: 11, fontWeight: 700, color: C.textLight, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 14 }}>
-            {searchRes.length} results
-          </p>
-          {searchRes.length === 0
-            ? <p style={{ textAlign: 'center', color: C.textLight, fontSize: 15, padding: '40px 0' }}>Nothing found 🙁</p>
-            : searchRes.map(p => (
-              <ListCard
-                key={p.id} p={p} cart={cart} addToCart={addToCart} dec={dec} floatMap={floatMap}
-                onOpen={() => { setSelP(p); go('product'); }}
+      {/* SCROLLABLE CONTENT AREA */}
+      <div style={{
+        flex: 1,
+        overflowY: 'auto',
+        overflowX: 'hidden',
+        paddingBottom: isProd ? 0 : totalQty > 0 ? 140 : 80,
+        WebkitOverflowScrolling: 'touch',
+      } as React.CSSProperties}>
+
+        {/* SEARCH RESULTS */}
+        {!isProd && search.length > 1 && (
+          <div style={{ background: C.bg, padding: '14px 18px 40px', animation: `fadeUp .2s ${sm}` }}>
+            <p style={{ fontSize: 11, fontWeight: 700, color: C.textLight, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 14 }}>
+              {searchRes.length} results
+            </p>
+            {searchRes.length === 0
+              ? <p style={{ textAlign: 'center', color: C.textLight, fontSize: 15, padding: '40px 0' }}>Nothing found 🙁</p>
+              : searchRes.map(p => (
+                <ListCard
+                  key={p.id} p={p} cart={cart} addToCart={addToCart} dec={dec} floatMap={floatMap}
+                  onOpen={() => { setSelP(p); go('product'); }}
+                />
+              ))
+            }
+          </div>
+        )}
+
+        {/* PAGES */}
+        {(isProd || search.length <= 1) && (
+          <div style={{
+            opacity: vis ? 1 : 0,
+            transform: vis ? 'translateY(0)' : 'translateY(12px)',
+            transition: `opacity .22s ${sm}, transform .22s ${sm}`,
+          }}>
+            {screen === 'home' && (
+              <HomeScreen
+                cart={cart} addToCart={addToCart} dec={dec} floatMap={floatMap}
+                onCat={id => go('cat', id)}
+                onOpen={p => { setSelP(p); go('product'); }}
               />
-            ))
-          }
-        </div>
-      )}
+            )}
 
-      {/* PAGES */}
-      {(isProd || search.length <= 1) && (
-        <div style={{
-          opacity: vis ? 1 : 0,
-          transform: vis ? 'translateY(0)' : 'translateY(12px)',
-          transition: `opacity .22s ${sm}, transform .22s ${sm}`,
-          paddingBottom: isProd ? 0 : totalQty > 0 ? 140 : 80,
-        }}>
-          {screen === 'home' && (
-            <HomeScreen
-              cart={cart} addToCart={addToCart} dec={dec} floatMap={floatMap}
-              onCat={id => go('cat', id)}
-              onOpen={p => { setSelP(p); go('product'); }}
-            />
-          )}
+            {screen === 'cat' && catMeta && (
+              <CategoryScreen
+                cat={catMeta} products={catProds}
+                cart={cart} addToCart={addToCart} dec={dec} floatMap={floatMap}
+                onOpen={p => { setSelP(p); go('product'); }}
+                onBack={() => go('home')}
+              />
+            )}
 
-          {screen === 'cat' && catMeta && (
-            <CategoryScreen
-              cat={catMeta} products={catProds}
-              cart={cart} addToCart={addToCart} dec={dec} floatMap={floatMap}
-              onOpen={p => { setSelP(p); go('product'); }}
-              onBack={() => go('home')}
-            />
-          )}
+            {screen === 'product' && selP && (
+              <ProductScreen
+                p={selP} cart={cart} addToCart={addToCart} dec={dec}
+                onBack={() => go(activeCat ? 'cat' : 'home', activeCat)}
+                onGoCart={() => { addToCart(selP.id); go('cart'); }}
+              />
+            )}
 
-          {screen === 'product' && selP && (
-            <ProductScreen
-              p={selP} cart={cart} addToCart={addToCart} dec={dec}
-              onBack={() => go(activeCat ? 'cat' : 'home', activeCat)}
-              onGoCart={() => { addToCart(selP.id); go('cart'); }}
-            />
-          )}
+            {screen === 'cart' && (
+              <CartScreen
+                cart={cart} addToCart={addToCart} dec={dec}
+                totalPrice={totalPrice} totalQty={totalQty}
+                checkout={checkout} onBack={() => go('home')}
+              />
+            )}
 
-          {screen === 'cart' && (
-            <CartScreen
-              cart={cart} addToCart={addToCart} dec={dec}
-              totalPrice={totalPrice} totalQty={totalQty}
-              checkout={checkout} onBack={() => go('home')}
-            />
-          )}
-
-          {screen === 'suggest' && <SuggestScreen />}
-        </div>
-      )}
+            {screen === 'suggest' && <SuggestScreen />}
+          </div>
+        )}
+      </div>
 
       {/* FLOATING CART BAR */}
       {!isProd && totalQty > 0 && screen !== 'cart' && (
