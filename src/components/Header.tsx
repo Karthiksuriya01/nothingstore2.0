@@ -6,12 +6,11 @@ interface HeaderProps {
     totalQty: number;
     totalPrice: number;
     cartBump: boolean;
-    search: string;
-    setSearch: (v: string) => void;
+
     onCartClick: () => void;
 }
 
-export default function Header({ totalQty, totalPrice, cartBump, search, setSearch, onCartClick }: HeaderProps) {
+export default function Header({ totalQty, totalPrice, cartBump, onCartClick }: HeaderProps) {
     return (
         <div style={{
             background: '#fff', padding: '16px 20px 14px',
