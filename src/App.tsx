@@ -127,10 +127,10 @@ export default function App() {
                   {/* illustration circle */}
                   <div style={{
                     width: 72, height: 72, borderRadius: '50%',
-                    background: C.primaryBg,
+                    background: '#f0fdf4',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    margin: '0 auto 16px',
-                    fontSize: 32,
+                     background: C.primaryBg,
+                  fontSize: 32,
                   }}>🔍</div>
 
                   <p style={{ fontSize: 18, fontWeight: 800, color: C.text, letterSpacing: '-0.5px', marginBottom: 6 }}>

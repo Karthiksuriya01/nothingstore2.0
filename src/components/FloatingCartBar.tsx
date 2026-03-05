@@ -1,5 +1,5 @@
-import { ShoppingCart, ArrowRight } from 'lucide-react';
-import { C, sp } from '../constants/theme';
+import { ArrowRight } from 'lucide-react';
+import { sm } from '../constants/theme';
 
 interface FloatingCartBarProps {
     totalQty: number;
@@ -10,36 +10,41 @@ interface FloatingCartBarProps {
 export default function FloatingCartBar({ totalQty, totalPrice, onCheckout }: FloatingCartBarProps) {
     return (
         <div style={{
-            position: 'fixed', bottom: 72, left: '50%', transform: 'translateX(-50%)',
+            position: 'fixed', bottom: 78, left: '50%', transform: 'translateX(-50%)',
             width: 'calc(100% - 32px)', maxWidth: 398,
-            background: C.dark, borderRadius: 20, padding: '12px 14px',
+            background: '#111', borderRadius: 16, padding: '13px 16px',
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            zIndex: 90, animation: `slideUpIn .38s ${sp}`,
-            boxShadow: `0 14px 40px rgba(21,128,61,.3)`,
+            zIndex: 90, animation: `slideUpIn .32s ${sm}`,
+            boxShadow: `0 8px 32px rgba(0,0,0,.22)`,
         }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                {/* Item count badge */}
                 <div style={{
-                    background: 'rgba(255,255,255,.1)', borderRadius: 12, padding: '7px 12px',
-                    display: 'flex', alignItems: 'center', gap: 7,
+                    width: 32, height: 32, borderRadius: 10,
+                    background: 'rgba(255,255,255,.1)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}>
-                    <ShoppingCart size={16} color="#fff" strokeWidth={2} />
                     <span style={{ fontSize: 14, fontWeight: 700, color: '#fff' }}>{totalQty}</span>
                 </div>
                 <div>
-                    <p style={{ fontSize: 11, color: 'rgba(255,255,255,.45)', marginBottom: 2 }}>Your cart</p>
-                    <p style={{ fontSize: 16, fontWeight: 800, color: '#fff', letterSpacing: '-0.5px' }}>₹{totalPrice.toLocaleString('en-IN')}</p>
+                    <p style={{ fontSize: 11, color: 'rgba(255,255,255,.4)', marginBottom: 2, fontWeight: 400 }}>
+                        {totalQty === 1 ? '1 item' : `${totalQty} items`}
+                    </p>
+                    <p style={{ fontSize: 16, fontWeight: 700, color: '#fff', letterSpacing: '-0.4px' }}>
+                        ₹{totalPrice.toLocaleString('en-IN')}
+                    </p>
                 </div>
             </div>
             <button
                 onClick={onCheckout}
                 style={{
-                    background: C.primary, color: '#fff', border: 'none', borderRadius: 14,
-                    padding: '11px 18px', fontSize: 14, fontWeight: 700, cursor: 'pointer',
-                    fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: 7,
-                    boxShadow: `0 4px 16px rgba(26,158,71,.45)`,
+                    background: '#fff', color: '#111', border: 'none', borderRadius: 12,
+                    padding: '10px 18px', fontSize: 13, fontWeight: 700, cursor: 'pointer',
+                    fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: 6,
+                    letterSpacing: '-0.2px',
                 }}
             >
-                Checkout <ArrowRight size={16} color="#fff" strokeWidth={2.5} />
+                View Cart <ArrowRight size={14} color="#111" strokeWidth={2.5} />
             </button>
         </div>
     );

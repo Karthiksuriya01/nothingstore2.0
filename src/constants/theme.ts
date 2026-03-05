@@ -1,16 +1,25 @@
 export const C = {
-    primary: '#1A9E47',
-    primary2: '#22C55E',
-    primaryDark: '#15803D',
-    primaryBg: '#EDFAF3',
-    primarySoft: '#F0FDF6',
-    dark: '#0F1F17',
-    text: '#111B14',
-    textMid: '#4B6B56',
-    textLight: '#9BB8A4',
-    bg: '#F6FBF7',
-    card: '#FFFFFF',
-    border: '#E2F0E7',
+    // Brand accent — used sparingly
+    primary: '#16a34a',
+    primary2: '#22c55e',
+    primaryDark: '#15803d',
+
+    // Surfaces
+    bg: '#ffffff',
+    card: '#ffffff',
+    surface: '#f8f8f8',
+
+    // Ink
+    text: '#111111',
+    textMid: '#555555',
+    textLight: '#999999',
+
+    // Borders — neutral grey, zero green tint
+    border: '#e8e8e8',
+    borderLight: '#f0f0f0',
+
+    // Dark (for floating bars etc.)
+    dark: '#111111',
 };
 
 export const CAT_BG: Record<string, string> = {
