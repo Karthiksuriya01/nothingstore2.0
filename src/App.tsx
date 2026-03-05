@@ -114,7 +114,60 @@ export default function App() {
               {searchRes.length} results
             </p>
             {searchRes.length === 0
-              ? <p style={{ textAlign: 'center', color: C.textLight, fontSize: 15, padding: '40px 0' }}>Nothing found 🙁</p>
+              ? (
+                <div style={{
+                  margin: '10px 0 0',
+                  background: '#fff',
+                  borderRadius: 24,
+                  border: `1.5px dashed ${C.border}`,
+                  padding: '32px 24px',
+                  textAlign: 'center',
+                  animation: `fadeUp .3s ${sm}`,
+                }}>
+                  {/* illustration circle */}
+                  <div style={{
+                    width: 72, height: 72, borderRadius: '50%',
+                    background: C.primaryBg,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    margin: '0 auto 16px',
+                    fontSize: 32,
+                  }}>🔍</div>
+
+                  <p style={{ fontSize: 18, fontWeight: 800, color: C.text, letterSpacing: '-0.5px', marginBottom: 6 }}>
+                    No results for&nbsp;
+                    <span style={{ color: C.primary }}>"{search}"</span>
+                  </p>
+                  <p style={{ fontSize: 13, color: C.textLight, lineHeight: 1.65, marginBottom: 22 }}>
+                    We don't carry it yet — but we're a growing startup!<br />
+                    Tell us and we'll try to stock it for you. 🚀
+                  </p>
+
+                  <button
+                    onClick={() => { setSearch(''); go('suggest'); }}
+                    style={{
+                      background: C.primary,
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: 16,
+                      padding: '14px 28px',
+                      fontSize: 14,
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                      fontFamily: 'inherit',
+                      boxShadow: `0 6px 22px rgba(26,158,71,.32)`,
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 8,
+                    }}
+                  >
+                    💡 Suggest this product
+                  </button>
+
+                  <p style={{ fontSize: 11, color: C.textLight, marginTop: 14 }}>
+                    We review every suggestion personally ❤️
+                  </p>
+                </div>
+              )
               : searchRes.map(p => (
                 <ListCard
                   key={p.id} p={p} cart={cart} addToCart={addToCart} dec={dec} floatMap={floatMap}
