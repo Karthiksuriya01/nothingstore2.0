@@ -17,7 +17,7 @@ export default function Carousel() {
     return (
         <div style={{
             margin: '0px 0px 0', borderRadius: 0, overflow: 'hidden',
-            position: 'relative', height: 190,
+            position: 'relative', height: 210,
         }}>
             {/* Keyframe animations injected inline */}
             <style>{`
