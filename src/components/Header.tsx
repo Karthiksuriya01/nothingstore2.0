@@ -41,7 +41,7 @@ export default function Header({ totalQty, totalPrice, cartBump, search, setSear
                         : <span style={{ fontSize: 12, fontWeight: 600, color: C.primary }}>Cart</span>}
                 </button>
             </div>
-            <div style={{
+            {/* <div style={{
                 background: C.primarySoft, borderRadius: 14,
                 display: 'flex', alignItems: 'center', padding: '12px 15px', gap: 10,
                 border: `1.5px solid ${C.border}`,
@@ -61,7 +61,7 @@ export default function Header({ totalQty, totalPrice, cartBump, search, setSear
                         <X size={14} color={C.textLight} />
                     </span>
                 )}
-            </div>
+            </div> */}
         </div>
     );
 }
