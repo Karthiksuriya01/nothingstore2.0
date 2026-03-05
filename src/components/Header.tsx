@@ -1,5 +1,5 @@
 
-// import { ShoppingCart, Search, X } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 import { C, sm } from '../constants/theme';
 
 interface HeaderProps {
