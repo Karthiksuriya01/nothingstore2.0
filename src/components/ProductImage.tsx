@@ -56,7 +56,7 @@ export default function ProductImage({ id, size = 64, radius = 12 }: PImgProps) 
     return (
         <div style={{
             width: sz, height: sz, borderRadius: radius,
-            background: C.primaryBg,
+            background: '#f8f8f8',
             display: 'flex', flexDirection: 'column', alignItems: 'center',
             justifyContent: 'center', flexShrink: 0,
         }}>

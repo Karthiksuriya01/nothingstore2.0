@@ -129,8 +129,7 @@ export default function App() {
                     width: 72, height: 72, borderRadius: '50%',
                     background: '#f0fdf4',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                     background: C.primaryBg,
-                  fontSize: 32,
+                    fontSize: 32,
                   }}>🔍</div>
 
                   <p style={{ fontSize: 18, fontWeight: 800, color: C.text, letterSpacing: '-0.5px', marginBottom: 6 }}>

@@ -55,7 +55,7 @@ export default function ProductScreen({ p, cart, addToCart, dec, onBack, onGoCar
                     {/* Product image */}
                     <div style={{
                         height: 260,
-                        background: FALLBACK_ICONS[p.cat] || C.primaryBg,
+                        background: FALLBACK_ICONS[p.cat] || '#f8f8f8',
                         borderRadius: 24, margin: '18px 0',
                         position: 'relative', overflow: 'hidden',
                     }}>
@@ -81,7 +81,7 @@ export default function ProductScreen({ p, cart, addToCart, dec, onBack, onGoCar
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 10 }}>
                         {p.tag && <span style={{ fontSize: 10, fontWeight: 700, background: C.primary, color: '#fff', borderRadius: 7, padding: '3px 9px', textTransform: 'uppercase' }}>{p.tag}</span>}
                         {pct > 0 && <span style={{ fontSize: 10, fontWeight: 700, background: '#FEF2F2', color: '#DC2626', borderRadius: 7, padding: '3px 9px' }}>{pct}% off</span>}
-                        <span style={{ fontSize: 10, fontWeight: 600, background: C.primaryBg, color: C.primary, borderRadius: 7, padding: '3px 9px' }}>{catLabel[p.cat] || p.cat}</span>
+                        <span style={{ fontSize: 10, fontWeight: 600, background: '#f0fdf4', color: C.primary, borderRadius: 7, padding: '3px 9px' }}>{catLabel[p.cat] || p.cat}</span>
                     </div>
 
                     <p style={{ fontSize: 24, fontWeight: 800, color: C.text, letterSpacing: '-0.8px', lineHeight: 1.2, marginBottom: 4 }}>{p.name}</p>
@@ -106,7 +106,7 @@ export default function ProductScreen({ p, cart, addToCart, dec, onBack, onGoCar
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
                                 {p.specs.map((s, i) => (
                                     <div key={i} style={{
-                                        background: C.primarySoft, borderRadius: 12, padding: '9px 12px',
+                                        background: '#f0fdf4', borderRadius: 12, padding: '9px 12px',
                                         border: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', gap: 7,
                                     }}>
                                         <div style={{ width: 6, height: 6, borderRadius: '50%', background: C.primary, flexShrink: 0 }} />
@@ -148,7 +148,7 @@ export default function ProductScreen({ p, cart, addToCart, dec, onBack, onGoCar
                                                         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', padding: 8 }}
                                                     />
                                                 ) : (
-                                                    <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: C.primaryBg }}>
+                                                    <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f8f8f8' }}>
                                                         <Star size={28} color={C.primary} strokeWidth={1.5} />
                                                     </div>
                                                 )}
@@ -166,7 +166,7 @@ export default function ProductScreen({ p, cart, addToCart, dec, onBack, onGoCar
                                                     onClick={e => { e.stopPropagation(); addToCart(r.id, e); }}
                                                     style={{
                                                         width: '100%', marginTop: 7,
-                                                        background: rQty > 0 ? C.primarySoft : C.primary,
+                                                        background: rQty > 0 ? '#f0fdf4' : C.primary,
                                                         color: rQty > 0 ? C.primary : '#fff',
                                                         border: 'none', borderRadius: 9, padding: '6px 0',
                                                         fontSize: 12, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit',
@@ -195,7 +195,7 @@ export default function ProductScreen({ p, cart, addToCart, dec, onBack, onGoCar
             }}>
                 {/* Add / qty control */}
                 <div style={{
-                    flex: 1, background: C.primarySoft, borderRadius: 16,
+                    flex: 1, background: '#f0fdf4', borderRadius: 16,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     padding: '13px 0', gap: 16, border: `1.5px solid ${C.border}`,
                 }}>
