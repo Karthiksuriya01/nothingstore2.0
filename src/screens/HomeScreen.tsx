@@ -23,6 +23,18 @@ export default function HomeScreen({ cart, addToCart, dec, onCat, onOpen }: Home
     const { products, stories, categories } = useData();
     const [selectedStoryCat, setSelectedStoryCat] = useState<string | null>(null);
 
+    // Mix up latest products so consecutive items aren't from the same category
+    const mixedLatest: Product[] = [];
+    const reversed = [...products].reverse();
+    const MAX_LATEST = 12;
+    while (reversed.length > 0 && mixedLatest.length < MAX_LATEST) {
+        let lastCat = mixedLatest.length > 0 ? mixedLatest[mixedLatest.length - 1].cat : null;
+        let idx = reversed.findIndex(p => p.cat !== lastCat);
+        if (idx === -1) idx = 0;
+        mixedLatest.push(reversed[idx]);
+        reversed.splice(idx, 1);
+    }
+
     const activeCats = categories.filter(c => stories.some(s => s.catId === c.id));
     const viewingStories = stories.filter(s => s.catId === selectedStoryCat);
     const viewingCat = categories.find(c => c.id === selectedStoryCat);
@@ -58,7 +70,7 @@ export default function HomeScreen({ cart, addToCart, dec, onCat, onOpen }: Home
                     <Label text="Latest Products" />
                 </div>
                 <div style={{ display: 'flex', gap: 14, overflowX: 'auto', padding: '14px 18px 0', WebkitOverflowScrolling: 'touch' }}>
-                    {[...products].reverse().map((p, i) => (
+                    {mixedLatest.map((p, i) => (
                         <div key={`latest-${p.id}`} style={{ animation: `fadeUp .3s ${sm} ${i * .025}s both`, display: 'flex', flexDirection: 'column', flexShrink: 0, width: 154 }}>
                             <GridCard p={p} cart={cart} addToCart={addToCart} dec={dec} onOpen={() => onOpen(p)} />
                         </div>

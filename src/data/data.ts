@@ -478,6 +478,7 @@ export const PRODUCTS: Product[] = [
         desc: 'Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles Ideal for Quick Cleaning of Cycles, Motorcycles',
         specs: ['Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles Ideal for Quick Cleaning of Cycles, Motorcycles', 'Avoid Sling Off & Prevent Chain breakage', 'Extended Chain Life'],
     },
+     
     {
         id: 28,
         name: '1200 GSM Microfiber Cloth Twisted Loop (40x40)',
@@ -549,6 +550,24 @@ export const PRODUCTS: Product[] = [
         tag: null,
         desc: '400 GSM- SUPER THICK CAR CLOTH: High density, Thick lint, very soft and does not damage a paint of the car. Strong water absorption, a piece of cloth can absorb up to 10 times their own weight of water, greatly reducing the drying time.',
         specs: ['High density','ery soft and does not damage a paint of the car.', 'Strong water absorption'],
+    },
+     {
+        id: 32,
+        name: 'Motomax Shiner Multi surface Spray Polish 100ml',
+        cat: 'bike',
+        sub: 'polish',
+        category: 'bike',
+        price: 120,
+        orig: 160,
+        unit: '1pc',
+        rating: 4.5,
+        reviews: 176,
+        stock: 10,
+        image: '/biike/motomax_shiner.png',
+        // images: ['/cloths/1200gsm/image1.png', '/cloths/1200gsm/image2.png', '/cloths/1200gsm/image3.png'],
+        tag: null,
+        desc: 'Instantly Cleans, Polishes and Shines Motorbikes, Scooters, Cars | Useful for Plastic, Metal, Tyre & Rubber Parts,',
+        specs: ['Instantly Cleans','Useful for Plastic, Metal, Tyre & Rubber Parts,'],
     },
 ];
 

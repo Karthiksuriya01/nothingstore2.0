@@ -24,7 +24,7 @@ export default function CategoryScreen({ cat, products, cart, addToCart, dec, on
     return (
         <div style={{ flex: 1, display: 'flex', flexDirection: 'row', height: '100%', minHeight: 0, overflow: 'hidden' }}>
             {/* LEFT SIDEBAR */}
-            <div style={{ width: 86, background: '#F0FAF4', borderRight: `1px solid ${C.border}`, overflowY: 'auto', flexShrink: 0 }}>
+            <div style={{ width: 86, background: '#F0FAF4', borderRight: `1px solid ${C.border}`, overflowY: 'auto', flexShrink: 0, paddingBottom: 80 }}>
                 {subs.map(s => {
                     const active = sub === s.id;
                     const demoProduct = products.find(p => p.sub === s.id || (s.id === 'all' && p.cat === cat.id));

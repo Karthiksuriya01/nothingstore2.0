@@ -77,6 +77,7 @@ function AppContent() {
       display: 'flex',
       flexDirection: 'column',
       position: 'relative',
+      overflow: 'hidden',
     }}>
       {/* PINNED HEADER — never scrolls */}
       {!isProd && (
