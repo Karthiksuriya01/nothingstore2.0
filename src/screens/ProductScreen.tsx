@@ -26,6 +26,7 @@ export default function ProductScreen({ p, cart, addToCart, dec, onBack, onGoCar
     const qty = cart[p.id] || 0;
     const pct = disc(p.orig, p.price);
     const [imgError, setImgError] = useState(false);
+    const [activeImg, setActiveImg] = useState(0);
 
     // Related products — same category, exclude current
     const related = PRODUCTS.filter(x => x.cat === p.cat && x.id !== p.id).slice(0, 6);
@@ -52,30 +53,57 @@ export default function ProductScreen({ p, cart, addToCart, dec, onBack, onGoCar
                 </div>
 
                 <div style={{ padding: '0 20px 28px' }}>
-                    {/* Product image */}
-                    <div style={{
-                        height: 260,
-                        background: FALLBACK_ICONS[p.cat] || '#f8f8f8',
-                        borderRadius: 24, margin: '18px 0',
-                        position: 'relative', overflow: 'hidden',
-                    }}>
-                        {p.image && !imgError ? (
-                            <img
-                                src={p.image}
-                                alt={p.name}
-                                style={{
-                                    position: 'absolute', inset: 0,
-                                    width: '100%', height: '100%',
-                                    objectFit: 'contain', padding: 20,
-                                }}
-                                onError={() => setImgError(true)}
-                            />
-                        ) : (
-                            <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <Star size={48} color={C.primary} strokeWidth={1.5} />
+                    {/* Product image(s) */}
+                    {p.images && p.images.length > 0 ? (
+                        <>
+                            <div style={{
+                                height: 260,
+                                background: FALLBACK_ICONS[p.cat] || '#f8f8f8',
+                                borderRadius: 24, margin: '18px 0 12px',
+                                position: 'relative', overflow: 'hidden', flexShrink: 0
+                            }}>
+                                <img src={p.images[activeImg]} alt={`${p.name} view ${activeImg + 1}`} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', padding: 20 }} />
                             </div>
-                        )}
-                    </div>
+                            {p.images.length > 1 && (
+                                <div style={{ display: 'flex', gap: 10, overflowX: 'auto', paddingBottom: 16, scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
+                                    {p.images.map((img, idx) => (
+                                        <div key={idx} onClick={() => setActiveImg(idx)} style={{
+                                            width: 60, height: 60, borderRadius: 14, cursor: 'pointer', flexShrink: 0,
+                                            border: `2px solid ${activeImg === idx ? C.primary : 'transparent'}`,
+                                            background: FALLBACK_ICONS[p.cat] || '#f8f8f8', position: 'relative', overflow: 'hidden',
+                                            transition: 'border-color 0.2s', padding: 4
+                                        }}>
+                                            <img src={img} style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: 10 }} />
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </>
+                    ) : (
+                        <div style={{
+                            height: 260,
+                            background: FALLBACK_ICONS[p.cat] || '#f8f8f8',
+                            borderRadius: 24, margin: '18px 0',
+                            position: 'relative', overflow: 'hidden',
+                        }}>
+                            {p.image && !imgError ? (
+                                <img
+                                    src={p.image}
+                                    alt={p.name}
+                                    style={{
+                                        position: 'absolute', inset: 0,
+                                        width: '100%', height: '100%',
+                                        objectFit: 'contain', padding: 20,
+                                    }}
+                                    onError={() => setImgError(true)}
+                                />
+                            ) : (
+                                <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <Star size={48} color={C.primary} strokeWidth={1.5} />
+                                </div>
+                            )}
+                        </div>
+                    )}
 
                     {/* Tags row */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 10 }}>

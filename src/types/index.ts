@@ -11,6 +11,7 @@ export interface Product {
   reviews: number;
   stock?: number;
   image: string;
+  images?: string[];
   tag: string | null;
   desc: string;
   specs: string[];
