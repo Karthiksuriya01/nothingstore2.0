@@ -52,6 +52,20 @@ export default function HomeScreen({ cart, addToCart, dec, onCat, onOpen }: Home
 
             {/* <Carousel /> */}
             <CategoryGrid onCat={onCat} />
+
+            <div style={{ padding: '26px 0 0' }}>
+                <div style={{ padding: '0 18px' }}>
+                    <Label text="Latest Products" />
+                </div>
+                <div style={{ display: 'flex', gap: 14, overflowX: 'auto', padding: '14px 18px 0', WebkitOverflowScrolling: 'touch' }}>
+                    {[...products].reverse().map((p, i) => (
+                        <div key={`latest-${p.id}`} style={{ animation: `fadeUp .3s ${sm} ${i * .025}s both`, display: 'flex', flexDirection: 'column', flexShrink: 0, width: 154 }}>
+                            <GridCard p={p} cart={cart} addToCart={addToCart} dec={dec} onOpen={() => onOpen(p)} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+
             <div style={{ padding: '26px 18px 0' }}>
                 <Label text="All Products" />
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 13, marginTop: 14 }}>
