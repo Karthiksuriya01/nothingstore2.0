@@ -39,7 +39,7 @@ export default function CartScreen({ cart, addToCart, dec, totalPrice, totalQty,
                     {Object.entries(cart).map(([id, _q]) => {
                         const p = PRODUCTS.find(x => x.id === +id);
                         if (!p) return null;
-                        return <ListCard key={id} p={p} cart={cart} addToCart={addToCart} dec={dec} floatMap={{}} onOpen={() => { }} />;
+                        return <ListCard key={id} p={p} cart={cart} addToCart={addToCart} dec={dec} onOpen={() => { }} />;
                     })}
                     <div style={{ background: C.card, borderRadius: 18, padding: '16px 18px', marginTop: 8, border: `1px solid ${C.border}` }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: C.textLight, marginBottom: 10 }}>
