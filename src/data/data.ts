@@ -251,7 +251,7 @@ export const PRODUCTS: Product[] = [
         rating: 4.5,
         reviews: 142,
         stock: 16,
-        image: '/Tools/TapariaScrewdriver.png',
+        image: '/Tools/taparaia_screw_driver_set.png',
         tag: null,
         desc: '31-Pieces Bit Driver Set. Complete screwdriver and bit set for all fastening needs. Multicolour with professional quality.',
         specs: ['31-Piece Set', 'Multiple Sizes', 'Professional Quality', 'Durable Bits', 'Comfortable Grip', 'Complete Solution'],
@@ -392,7 +392,7 @@ export const PRODUCTS: Product[] = [
         desc: 'Advanced Lubrication Spray for Bike Chains | Protects Against Wear & Corrosion, Improves Chain Life',
         specs: ['Maximum Wear Protection', 'Extreme Pressure Resistance', 'Waterproof Formula', 'Long-Lasting Lubrication', 'Corrosion Inhibitors', 'All Weather Performance'],
     },
-     {
+    {
         id: 23,
         name: 'Motul Chain Clean Spray Small',
         cat: 'bike',
@@ -424,7 +424,7 @@ export const PRODUCTS: Product[] = [
         image: '/biike/motul_vision_cleaner.png',
         tag: null,
         desc: 'A neutral, non-aggressive cleaner designed for helmet exteriors and visors. It effectively removes oily and dry dirt, including stubborn grime and insects, without leaving streaks or residue. Suitable for all helmet types and visor technologies.',
-        specs: ['Neutral pH formula','Streak-free finish','Suitable for all helmet types and visor technologies','Effective against oily and dry dirt, including insects','Quick-drying formula'],
+        specs: ['Neutral pH formula', 'Streak-free finish', 'Suitable for all helmet types and visor technologies', 'Effective against oily and dry dirt, including insects', 'Quick-drying formula'],
     },
     {
         id: 25,
@@ -441,9 +441,9 @@ export const PRODUCTS: Product[] = [
         image: '/biike/helmet_interior_cleaner.png',
         tag: null,
         desc: 'A specialized cleaner and sanitizer designed to deeply clean and neutralize odors from the interior of all types of helmets, ensuring hygiene and comfort.',
-        specs: ['Dermatologically tested and safe for skin','Suitable for all helmet interiors .','Immediate odor elimination and curative action'],
+        specs: ['Dermatologically tested and safe for skin', 'Suitable for all helmet interiors .', 'Immediate odor elimination and curative action'],
     },
-     {
+    {
         id: 26,
         name: 'Motomax Chain Lube Aerosol Spray 100 ml',
         cat: 'bike',
@@ -458,9 +458,9 @@ export const PRODUCTS: Product[] = [
         image: '/biike/motomax_chain_lube.png',
         tag: null,
         desc: 'Provides Lubrication and corrosion protection of Chain & sprockets for Bikes, Motorbikes, Cars| Avoid Sling Off & Prevent Chain breakage | Extended Chain Life',
-        specs: ['Provides Lubrication and corrosion protection of Chain & sprockets for Bikes, Motorbikes, Cars','Avoid Sling Off & Prevent Chain breakage','Extended Chain Life'],
+        specs: ['Provides Lubrication and corrosion protection of Chain & sprockets for Bikes, Motorbikes, Cars', 'Avoid Sling Off & Prevent Chain breakage', 'Extended Chain Life'],
     },
-     {
+    {
         id: 27,
         name: 'Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles',
         cat: 'bike',
@@ -475,7 +475,7 @@ export const PRODUCTS: Product[] = [
         image: '/biike/chain_clean_brush.png',
         tag: null,
         desc: 'Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles Ideal for Quick Cleaning of Cycles, Motorcycles',
-        specs: ['Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles Ideal for Quick Cleaning of Cycles, Motorcycles','Avoid Sling Off & Prevent Chain breakage','Extended Chain Life'],
+        specs: ['Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles Ideal for Quick Cleaning of Cycles, Motorcycles', 'Avoid Sling Off & Prevent Chain breakage', 'Extended Chain Life'],
     },
 ];
 
