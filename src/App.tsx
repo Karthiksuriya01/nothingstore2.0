@@ -11,6 +11,7 @@ import CategoryScreen from './screens/CategoryScreen';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 import SuggestScreen from './screens/SuggestScreen';
+import AllCategoriesScreen from './screens/AllCategoriesScreen';
 import type { Product } from './types';
 
 function AppContent() {
@@ -65,6 +66,7 @@ function AppContent() {
   const catProds = activeCat ? PRODUCTS.filter(p => p.cat === activeCat) : [];
   const searchRes = search.length > 1 ? PRODUCTS.filter(p => p.name.toLowerCase().includes(search.toLowerCase())) : [];
   const isProd = screen === 'product';
+  const isFullHeightScreen = screen === 'product' || screen === 'cat';
 
   return (
     <div style={{
@@ -88,11 +90,11 @@ function AppContent() {
       )}
 
       {/* SCROLLABLE CONTENT AREA */}
-      <div style={isProd ? {
+      <div style={isFullHeightScreen ? {
         flex: 1,
         display: 'flex',
         flexDirection: 'column',
-        overflow: 'hidden',     /* ProductScreen handles its own scroll */
+        overflow: 'hidden',     /* Screen handles its own scroll */
         minHeight: 0,
       } : {
         flex: 1,
@@ -177,18 +179,24 @@ function AppContent() {
         {(isProd || search.length <= 1) && (
           <div style={vis ? {
             animation: `slideInRight .22s ease-out`,
-            ...(isProd ? { flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', minHeight: 0 } : {}),
+            ...(isFullHeightScreen ? { flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', minHeight: 0 } : {}),
           } : {
             opacity: 0,
             transform: 'translateX(-18px)',
             transition: `opacity .18s ease, transform .18s ease`,
-            ...(isProd ? { flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', minHeight: 0 } : {}),
+            ...(isFullHeightScreen ? { flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', minHeight: 0 } : {}),
           }}>
             {screen === 'home' && (
               <HomeScreen
                 cart={cart} addToCart={addToCart} dec={dec}
                 onCat={id => go('cat', id)}
                 onOpen={p => { setSelP(p); go('product'); }}
+              />
+            )}
+
+            {screen === 'cats' && (
+              <AllCategoriesScreen
+                onCat={id => go('cat', id)}
               />
             )}
 
@@ -237,7 +245,6 @@ function AppContent() {
         <BottomNav
           screen={screen}
           onNav={(sc, catId) => sc === 'cat' ? go('cat', catId ?? activeCat) : go(sc)}
-          activeCat={activeCat}
         />
       )}
     </div>

@@ -47,6 +47,6 @@ export interface Story {
   image: string;
 }
 
-export type Screen = 'home' | 'cat' | 'product' | 'cart' | 'suggest';
+export type Screen = 'home' | 'cats' | 'cat' | 'product' | 'cart' | 'suggest';
 
 export type CartState = Record<number, number>;

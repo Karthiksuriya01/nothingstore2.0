@@ -51,7 +51,7 @@ export default function HomeScreen({ cart, addToCart, dec, onCat, onOpen }: Home
             )}
 
             {/* <Carousel /> */}
-            <CategoryGrid onCat={onCat} />
+            <CategoryGrid onCat={onCat} limit={4} />
 
             <div style={{ padding: '26px 0 0' }}>
                 <div style={{ padding: '0 18px' }}>

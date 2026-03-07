@@ -4,6 +4,7 @@ import { useData } from '../context/DataContext';
 
 interface CategoryGridProps {
     onCat: (id: string) => void;
+    limit?: number;
 }
 
 function Label({ text }: { text: string }) {
@@ -12,14 +13,15 @@ function Label({ text }: { text: string }) {
     );
 }
 
-export default function CategoryGrid({ onCat }: CategoryGridProps) {
+export default function CategoryGrid({ onCat, limit }: CategoryGridProps) {
     const { categories, products } = useData();
+    const displayCats = limit ? categories.slice(0, limit) : categories;
 
     return (
         <div style={{ padding: '26px 18px 0' }}>
             <Label text="Shop by Category" />
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 13, marginTop: 14 }}>
-                {categories.map((c, i) => {
+                {displayCats.map((c, i) => {
                     const count = products.filter(p => p.cat === c.id).length;
                     return (
                         <div key={c.id}

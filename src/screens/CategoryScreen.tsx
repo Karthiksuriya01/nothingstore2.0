@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import * as LucideIcons from 'lucide-react';
+
 import { ChevronLeft } from 'lucide-react';
 import { C, sm } from '../constants/theme';
 import { CAT_SUBS } from '../data/data';
@@ -22,12 +22,14 @@ export default function CategoryScreen({ cat, products, cart, addToCart, dec, on
     const filtered = sub === 'all' ? products : products.filter(p => p.sub === sub);
 
     return (
-        <div style={{ display: 'flex', height: '100%', minHeight: '60vh', overflow: 'hidden' }}>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'row', height: '100%', minHeight: 0, overflow: 'hidden' }}>
             {/* LEFT SIDEBAR */}
             <div style={{ width: 86, background: '#F0FAF4', borderRight: `1px solid ${C.border}`, overflowY: 'auto', flexShrink: 0 }}>
                 {subs.map(s => {
                     const active = sub === s.id;
-                    const IconComp = (LucideIcons as unknown as Record<string, React.ElementType>)[s.icon];
+                    const demoProduct = products.find(p => p.sub === s.id || (s.id === 'all' && p.cat === cat.id));
+                    const imgUrl = demoProduct?.image || cat.image;
+
                     return (
                         <div
                             key={s.id}
@@ -41,13 +43,14 @@ export default function CategoryScreen({ cat, products, cart, addToCart, dec, on
                         >
                             <div style={{
                                 width: 48, height: 48, borderRadius: 14,
-                                background: active ? '#E2F5EA' : '#E2F5EA',
+                                background: active ? '#E2F5EA' : '#fff',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                margin: '0 auto 6px',
+                                margin: '0 auto 6px', position: 'relative', overflow: 'hidden',
                                 transition: `background .18s ${sm}`,
-                                boxShadow: active ? `0 2px 8px rgba(26,158,71,.18)` : 'none',
+                                boxShadow: active ? `0 2px 8px rgba(26,158,71,.18)` : '0 1px 3px rgba(0,0,0,0.05)',
+                                border: `1px solid ${C.border}`
                             }}>
-                                {IconComp && <IconComp size={22} color={active ? C.primary : C.textMid} strokeWidth={1.8} />}
+                                {imgUrl && <img src={imgUrl} alt={s.label} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 4 }} />}
                             </div>
                             <p style={{ fontSize: 9.5, fontWeight: active ? 700 : 500, color: active ? C.primary : C.textMid, lineHeight: 1.3 }}>{s.label}</p>
                         </div>
