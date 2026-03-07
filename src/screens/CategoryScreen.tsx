@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import * as LucideIcons from 'lucide-react';
 import { ChevronLeft } from 'lucide-react';
 import { C, sm } from '../constants/theme';
-import { CAT_SUBS } from '../data/categories';
+import { CAT_SUBS } from '../data/data';
 import type { Product, CartState } from '../types';
 import CatGridCard from '../components/cards/CatGridCard';
 
 interface CatScreenProps {
-    cat: { id: string; name: string; sub: string; grad: string };
+    cat: { id: string; name: string; sub: string; image: string };
     products: Product[];
     cart: CartState;
     addToCart: (id: number, e?: React.MouseEvent) => void;
@@ -42,7 +42,7 @@ export default function CategoryScreen({ cat, products, cart, addToCart, dec, fl
                         >
                             <div style={{
                                 width: 48, height: 48, borderRadius: 14,
-                                background: active ? C.primaryBg : '#E2F5EA',
+                                background: active ? '#E2F5EA' : '#E2F5EA',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                                 margin: '0 auto 6px',
                                 transition: `background .18s ${sm}`,
@@ -66,7 +66,7 @@ export default function CategoryScreen({ cat, products, cart, addToCart, dec, fl
                     <button
                         onClick={onBack}
                         style={{
-                            background: C.primaryBg, border: `1px solid ${C.border}`, borderRadius: 10,
+                            background: '#E2F5EA', border: `1px solid ${C.border}`, borderRadius: 10,
                             padding: '6px 11px', fontSize: 12, fontWeight: 600, color: C.primary,
                             cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: 4,
                         }}

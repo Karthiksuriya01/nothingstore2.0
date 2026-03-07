@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { C } from '../constants/theme';
-import { PRODUCTS } from '../data/products';
+import { PRODUCTS } from '../data/data';
 import { Droplets, FlaskConical, Leaf, ShoppingBasket, Wrench } from 'lucide-react';
 
 interface PImgProps {

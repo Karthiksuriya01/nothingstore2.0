@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChevronLeft, ShoppingCart, ArrowRight, MessageCircle } from 'lucide-react';
 import { C } from '../constants/theme';
-import { PRODUCTS } from '../data/products';
+import { PRODUCTS } from '../data/data';
 import type { CartState } from '../types';
 import ListCard from '../components/cards/ListCard';
 
@@ -28,7 +28,7 @@ export default function CartScreen({ cart, addToCart, dec, totalPrice, totalQty,
 
             {totalQty === 0 ? (
                 <div style={{ textAlign: 'center', padding: '60px 0' }}>
-                    <div style={{ width: 72, height: 72, background: C.primaryBg, borderRadius: 24, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+                    <div style={{ width: 72, height: 72, background: '#E2F5EA', borderRadius: 24, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
                         <ShoppingCart size={32} color={C.primary} strokeWidth={2} />
                     </div>
                     <p style={{ fontSize: 16, fontWeight: 700, color: C.text }}>Cart is empty</p>

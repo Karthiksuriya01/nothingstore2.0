@@ -19,7 +19,7 @@ export default function SuggestScreen() {
 
             {done ? (
                 <div style={{ textAlign: 'center', padding: '40px 0' }}>
-                    <div style={{ width: 72, height: 72, background: C.primaryBg, borderRadius: 24, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+                    <div style={{ width: 72, height: 72, background: '#E2F5EA', borderRadius: 24, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
                         <Send size={32} color={C.primary} strokeWidth={1.8} />
                     </div>
                     <p style={{ fontSize: 18, fontWeight: 800, color: C.text }}>Thanks!</p>
@@ -52,7 +52,7 @@ export default function SuggestScreen() {
                         disabled={!text.trim()}
                         style={{
                             width: '100%',
-                            background: text.trim() ? C.primary : C.primaryBg,
+                            background: text.trim() ? C.primary : '#E2F5EA',
                             color: text.trim() ? '#fff' : C.textLight,
                             border: 'none', borderRadius: 16, padding: '16px', fontSize: 15,
                             fontWeight: 700, cursor: text.trim() ? 'pointer' : 'default',

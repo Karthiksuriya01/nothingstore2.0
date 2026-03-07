@@ -62,7 +62,7 @@ export default function CatGridCard({ p, cart, addToCart, dec, floatMap, onOpen 
                     <div style={{
                         position: 'absolute', inset: 0,
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        background: C.primaryBg,
+                        background: '#E2F5EA',
                     }}>
                         <FallbackIcon size={32} color={C.primary} />
                     </div>

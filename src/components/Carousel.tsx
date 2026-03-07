@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { sm } from '../constants/theme';
-import { BANNERS } from '../data/categories';
+import { BANNERS } from '../data/data';
 import { useInterval } from '../hooks/useInterval';
 
 export default function Carousel() {

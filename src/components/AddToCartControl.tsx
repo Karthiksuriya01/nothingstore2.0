@@ -20,7 +20,7 @@ export default function AddToCartControl({ p, qty, addToCart, dec, small = false
                 onClick={e => addToCart(p.id, e)}
                 style={{
                     height: h,
-                    background: C.primaryBg,
+                    background: '#E2F5EA',
                     color: C.primary,
                     border: `1.5px solid ${C.primary}`,
                     borderRadius: 10,
