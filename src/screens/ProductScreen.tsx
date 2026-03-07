@@ -33,10 +33,10 @@ export default function ProductScreen({ p, cart, addToCart, dec, onBack, onGoCar
 
     return (
         /* Outer: flex column filling the parent scroll container */
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0 }}>
 
             {/* ── Scrollable content ── */}
-            <div style={{ flex: 1, overflowY: 'auto', overflowX: 'hidden', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}>
+            <div style={{ flex: 1, overflowY: 'auto', overflowX: 'hidden', WebkitOverflowScrolling: 'touch', minHeight: 0, overscrollBehaviorY: 'contain' } as React.CSSProperties}>
 
                 {/* Sticky back header */}
                 <div style={{

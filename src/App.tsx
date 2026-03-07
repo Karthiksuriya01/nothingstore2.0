@@ -93,12 +93,14 @@ function AppContent() {
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',     /* ProductScreen handles its own scroll */
+        minHeight: 0,
       } : {
         flex: 1,
         overflowY: 'auto',
         overflowX: 'hidden',
         paddingBottom: totalQty > 0 ? 140 : 80,
         WebkitOverflowScrolling: 'touch',
+        minHeight: 0,
       } as React.CSSProperties}>
 
         {/* SEARCH RESULTS */}
@@ -175,12 +177,12 @@ function AppContent() {
         {(isProd || search.length <= 1) && (
           <div style={vis ? {
             animation: `slideInRight .22s ease-out`,
-            ...(isProd ? { flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' } : {}),
+            ...(isProd ? { flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', minHeight: 0 } : {}),
           } : {
             opacity: 0,
             transform: 'translateX(-18px)',
             transition: `opacity .18s ease, transform .18s ease`,
-            ...(isProd ? { flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' } : {}),
+            ...(isProd ? { flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', minHeight: 0 } : {}),
           }}>
             {screen === 'home' && (
               <HomeScreen
