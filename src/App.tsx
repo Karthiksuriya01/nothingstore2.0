@@ -173,10 +173,13 @@ function AppContent() {
 
         {/* PAGES */}
         {(isProd || search.length <= 1) && (
-          <div style={{
-            opacity: vis ? 1 : 0,
-            transform: vis ? 'translateY(0)' : 'translateY(12px)',
-            transition: `opacity .22s ${sm}, transform .22s ${sm}`,
+          <div style={vis ? {
+            animation: `slideInRight .22s ease-out`,
+            ...(isProd ? { flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' } : {}),
+          } : {
+            opacity: 0,
+            transform: 'translateX(-18px)',
+            transition: `opacity .18s ease, transform .18s ease`,
             ...(isProd ? { flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' } : {}),
           }}>
             {screen === 'home' && (
