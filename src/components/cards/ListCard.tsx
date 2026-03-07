@@ -1,7 +1,7 @@
 import React from 'react';
 import { Star } from 'lucide-react';
 import { C, sm } from '../../constants/theme';
-import { disc } from '../../data/products';
+import { disc } from '../../data/data';
 import type { Product, CartState } from '../../types';
 import ProductImage from '../ProductImage';
 import AddToCartControl from '../AddToCartControl';

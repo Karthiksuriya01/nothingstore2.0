@@ -12,7 +12,7 @@
  * ========================================
  */
 
-import type { Product, Banner, SubCategory } from '../types';
+import type { Product, Banner, SubCategory, Story } from '../types';
 
 // ========================================
 // PRODUCTS DATA
@@ -388,10 +388,11 @@ interface CategoryMeta {
 }
 
 export const CATS_META: CategoryMeta[] = [
-    { id: 'car', name: 'Car Care', sub: 'Liqui Moly & more', image: '/public/Engine Oil/5w_40_liquimoly/5w40img.png' },
+    { id: 'car', name: 'Car Care', sub: 'Liqui Moly & more', image: '/categorie/car.png' },
     { id: 'dry-fruits', name: 'Dry Fruits', sub: 'Fresh & nutritious', image: '/dry_fruits/kaju.png' },
-    { id: 'grocery', name: 'Groceries', sub: 'Oils & essentials', image: '/dry_fruits/kaju.png' },
-    { id: 'tools', name: 'Tools', sub: 'Taparia, 3M & more', image: 'https://images.unsplash.com/photo-1549590776-15485f4bebed?w=500&h=500&fit=crop' },
+    { id: 'grocery', name: 'Groceries', sub: 'Oils & essentials', image: '/categorie/grocessories.png' },
+    { id: 'tools', name: 'Tools', sub: 'Taparia, 3M & more', image: '/categorie/tools.png' },
+     { id: 'bike', name: 'Bike', sub: 'Car Care', image: '/categorie/bike.png' },
 ];
 
 // ========================================
@@ -439,6 +440,17 @@ export const CAT_ICONS: Record<string, string> = {
     grocery: 'ShoppingBasket',
     tools: 'Wrench',
 };
+
+// ========================================
+// STORIES DATA
+// ========================================
+// Add story images for categories here.
+// catId must match a category id (e.g. 'car', 'dry-fruits', 'tools', 'grocery', 'bike')
+// image can be a local path like '/banner/liquimoly.png' or an external URL
+export const STORIES: Story[] = [
+    { id: 's_1', catId: 'car', image: '/banner/liquimoly.png' },
+    { id: 's_2', catId: 'dry-fruits', image: '/banner/dryfruits.png' },
+];
 
 // ========================================
 // UTILITY FUNCTION

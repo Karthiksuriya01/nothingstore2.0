@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Star } from 'lucide-react';
 import { C, sm } from '../../constants/theme';
-import { disc, PRODUCTS } from '../../data/products';
+import { disc, PRODUCTS } from '../../data/data';
 import type { Product, CartState } from '../../types';
 import { Droplets, FlaskConical, Leaf, ShoppingBasket, Wrench } from 'lucide-react';
 import AddToCartControl from '../AddToCartControl';

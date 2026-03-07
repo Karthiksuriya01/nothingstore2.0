@@ -11,7 +11,6 @@ import CategoryScreen from './screens/CategoryScreen';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 import SuggestScreen from './screens/SuggestScreen';
-import AdminScreen from './screens/AdminScreen';
 import type { Product } from './types';
 
 function AppContent() {
@@ -91,7 +90,6 @@ function AppContent() {
           search={search}
           setSearch={setSearch}
           onCartClick={() => go('cart')}
-          onAdminClick={() => go('admin')}
         />
       )}
 
@@ -222,8 +220,6 @@ function AppContent() {
             )}
 
             {screen === 'suggest' && <SuggestScreen />}
-
-            {screen === 'admin' && <AdminScreen onBack={() => go('home')} />}
           </div>
         )}
       </div>
@@ -238,7 +234,7 @@ function AppContent() {
       )}
 
       {/* BOTTOM NAV */}
-      {!isProd && screen !== 'admin' && (
+      {!isProd && (
         <BottomNav
           screen={screen}
           onNav={(sc, catId) => sc === 'cat' ? go('cat', catId ?? activeCat) : go(sc)}
