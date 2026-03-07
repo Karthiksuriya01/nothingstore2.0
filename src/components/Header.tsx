@@ -5,13 +5,12 @@ import { C, sm } from '../constants/theme';
 interface HeaderProps {
     totalQty: number;
     totalPrice: number;
-    cartBump: boolean;
     search: string;
     setSearch: (v: string) => void;
     onCartClick: () => void;
 }
 
-export default function Header({ totalQty, totalPrice, cartBump, search, setSearch, onCartClick }: HeaderProps) {
+export default function Header({ totalQty, totalPrice, search, setSearch, onCartClick }: HeaderProps) {
     return (
         <div style={{
             background: '#fff',
@@ -22,8 +21,8 @@ export default function Header({ totalQty, totalPrice, cartBump, search, setSear
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
                 <div style={{ lineHeight: 1, display: 'flex', alignItems: 'center', gap: 6 }}>
                     <div>
-                        <span style={{ fontSize: 24, fontWeight: 800, letterSpacing: '-1.2px', color: '#111' }}>nothing</span>
-                        <span style={{ fontSize: 24, fontWeight: 300, letterSpacing: '-1.2px', color: '#bbb' }}>store</span>
+                        <span style={{ fontSize: 24, fontWeight: 800, letterSpacing: '-1.2px', color: '#111' }}>Nothing</span>
+                        <span style={{ fontSize: 24, fontWeight: 300, letterSpacing: '-1.2px', color: '#bbb' }}>Store</span>
                     </div>
                 </div>
                 <button
@@ -34,7 +33,6 @@ export default function Header({ totalQty, totalPrice, cartBump, search, setSear
                         borderRadius: 50, padding: totalQty > 0 ? '9px 16px' : '8px 14px',
                         display: 'flex', alignItems: 'center', gap: 7,
                         transition: `all .22s ${sm}`,
-                        animation: cartBump ? 'bump .4s ease' : undefined,
                         cursor: 'pointer',
                     }}
                 >

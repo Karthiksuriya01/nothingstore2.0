@@ -12,12 +12,11 @@ interface CatScreenProps {
     cart: CartState;
     addToCart: (id: number, e?: React.MouseEvent) => void;
     dec: (id: number, e?: React.MouseEvent) => void;
-    floatMap: Record<number, number>;
     onOpen: (p: Product) => void;
     onBack: () => void;
 }
 
-export default function CategoryScreen({ cat, products, cart, addToCart, dec, floatMap, onOpen, onBack }: CatScreenProps) {
+export default function CategoryScreen({ cat, products, cart, addToCart, dec, onOpen, onBack }: CatScreenProps) {
     const [sub, setSub] = useState('all');
     const subs = CAT_SUBS[cat.id] || [{ id: 'all', label: 'All', icon: 'Package' }];
     const filtered = sub === 'all' ? products : products.filter(p => p.sub === sub);
@@ -80,7 +79,7 @@ export default function CategoryScreen({ cat, products, cart, addToCart, dec, fl
                     : <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
                         {filtered.map((p, i) => (
                             <div key={p.id} style={{ animation: `fadeUp .25s ${sm} ${i * .04}s both`, display: 'flex', flexDirection: 'column' }}>
-                                <CatGridCard p={p} cart={cart} addToCart={addToCart} dec={dec} floatMap={floatMap} onOpen={() => onOpen(p)} />
+                                <CatGridCard p={p} cart={cart} addToCart={addToCart} dec={dec} onOpen={() => onOpen(p)} />
                             </div>
                         ))}
                     </div>

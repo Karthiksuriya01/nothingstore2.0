@@ -29,30 +29,6 @@ button {
   font-family: inherit;
 }
 
-@keyframes floatUp {
-  0% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(-40px) scale(1.4);
-  }
-}
-
-@keyframes bump {
-
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  45% {
-    transform: scale(1.24);
-  }
-}
-
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -68,7 +44,7 @@ button {
 @keyframes slideUpIn {
   from {
     opacity: 0;
-    transform: translateY(110%);
+    transform: translateY(20px);
   }
 
   to {

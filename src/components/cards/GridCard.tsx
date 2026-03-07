@@ -16,13 +16,11 @@ interface GridCardProps {
     cart: CartState;
     addToCart: (id: number, e?: React.MouseEvent) => void;
     dec: (id: number, e?: React.MouseEvent) => void;
-    floatMap: Record<number, number>;
     onOpen: () => void;
 }
 
-export default function GridCard({ p, cart, addToCart, dec, floatMap, onOpen }: GridCardProps) {
+export default function GridCard({ p, cart, addToCart, dec, onOpen }: GridCardProps) {
     const qty = cart[p.id] || 0;
-    const fresh = floatMap[p.id] && Date.now() - floatMap[p.id] < 700;
     const pct = disc(p.orig, p.price);
     const [imgError, setImgError] = useState(false);
     const FallbackIcon = FALLBACK_ICONS[p.sub ?? p.cat] || Droplets;
@@ -70,15 +68,6 @@ export default function GridCard({ p, cart, addToCart, dec, floatMap, onOpen }: 
                     </div>
                 )}
 
-                {/* +1 float */}
-                {fresh && (
-                    <div style={{
-                        position: 'absolute', top: 8, left: '50%', transform: 'translateX(-50%)',
-                        fontSize: 11, fontWeight: 800, color: C.primary,
-                        background: 'rgba(255,255,255,.95)', borderRadius: 20, padding: '2px 9px',
-                        animation: `floatUp .65s ${sm} forwards`, pointerEvents: 'none', whiteSpace: 'nowrap',
-                    }}>+1 ✓</div>
-                )}
 
                 {/* Tag badge */}
                 {p.tag && (

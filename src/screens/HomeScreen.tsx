@@ -11,7 +11,6 @@ interface HomeScreenProps {
     cart: CartState;
     addToCart: (id: number, e?: React.MouseEvent) => void;
     dec: (id: number, e?: React.MouseEvent) => void;
-    floatMap: Record<number, number>;
     onCat: (id: string) => void;
     onOpen: (p: Product) => void;
 }
@@ -20,7 +19,7 @@ function Label({ text }: { text: string }) {
     return <p style={{ fontSize: 11, fontWeight: 700, color: '#9BB8A4', letterSpacing: 1, textTransform: 'uppercase' }}>{text}</p>;
 }
 
-export default function HomeScreen({ cart, addToCart, dec, floatMap, onCat, onOpen }: HomeScreenProps) {
+export default function HomeScreen({ cart, addToCart, dec, onCat, onOpen }: HomeScreenProps) {
     const { products, stories, categories } = useData();
     const [selectedStoryCat, setSelectedStoryCat] = useState<string | null>(null);
 
@@ -58,7 +57,7 @@ export default function HomeScreen({ cart, addToCart, dec, floatMap, onCat, onOp
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 13, marginTop: 14 }}>
                     {products.map((p, i) => (
                         <div key={p.id} style={{ animation: `fadeUp .3s ${sm} ${i * .025}s both`, display: 'flex', flexDirection: 'column' }}>
-                            <GridCard p={p} cart={cart} addToCart={addToCart} dec={dec} floatMap={floatMap} onOpen={() => onOpen(p)} />
+                            <GridCard p={p} cart={cart} addToCart={addToCart} dec={dec} onOpen={() => onOpen(p)} />
                         </div>
                     ))}
                 </div>

@@ -11,7 +11,6 @@ interface ListCardProps {
     cart: CartState;
     addToCart: (id: number, e?: React.MouseEvent) => void;
     dec: (id: number, e?: React.MouseEvent) => void;
-    floatMap: Record<number, number>;
     onOpen: () => void;
 }
 

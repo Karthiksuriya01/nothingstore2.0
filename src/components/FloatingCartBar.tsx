@@ -1,5 +1,4 @@
 import { ArrowRight } from 'lucide-react';
-import { sm } from '../constants/theme';
 
 interface FloatingCartBarProps {
     totalQty: number;
@@ -10,12 +9,12 @@ interface FloatingCartBarProps {
 export default function FloatingCartBar({ totalQty, totalPrice, onCheckout }: FloatingCartBarProps) {
     return (
         <div style={{
-            position: 'fixed', bottom: 78, left: '50%', transform: 'translateX(-50%)',
-            width: 'calc(100% - 32px)', maxWidth: 398,
+            position: 'fixed', bottom: 78, left: 16, right: 16,
+            maxWidth: 398, margin: '0 auto',
             background: '#111', borderRadius: 16, padding: '13px 16px',
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            zIndex: 90, animation: `slideUpIn .32s ${sm}`,
-            boxShadow: `0 8px 32px rgba(0,0,0,.22)`,
+            zIndex: 90, animation: `slideUpIn .28s ease-out`,
+            boxShadow: `0 4px 20px rgba(0,0,0,.18)`,
         }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                 {/* Item count badge */}

@@ -20,8 +20,6 @@ function AppContent() {
   const [selP, setSelP] = useState<Product | null>(null);
   const [cart, setCart] = useState<CartState>({});
   const [vis, setVis] = useState(true);
-  const [floatMap, setFloatMap] = useState<Record<number, number>>({});
-  const [cartBump, setCartBump] = useState(false);
   const [search, setSearch] = useState('');
 
   const totalQty = Object.values(cart).reduce((a, b) => a + b, 0);
@@ -42,9 +40,6 @@ function AppContent() {
   const addToCart = (id: number, e?: React.MouseEvent) => {
     if (e) { e.preventDefault(); e.stopPropagation(); }
     setCart(c => ({ ...c, [id]: (c[id] || 0) + 1 }));
-    setFloatMap(f => ({ ...f, [id]: Date.now() }));
-    setCartBump(true);
-    setTimeout(() => setCartBump(false), 400);
   };
 
   const dec = (id: number, e?: React.MouseEvent) => {
@@ -86,7 +81,6 @@ function AppContent() {
         <Header
           totalQty={totalQty}
           totalPrice={totalPrice}
-          cartBump={cartBump}
           search={search}
           setSearch={setSearch}
           onCartClick={() => go('cart')}
@@ -169,7 +163,7 @@ function AppContent() {
               )
               : searchRes.map(p => (
                 <ListCard
-                  key={p.id} p={p} cart={cart} addToCart={addToCart} dec={dec} floatMap={floatMap}
+                  key={p.id} p={p} cart={cart} addToCart={addToCart} dec={dec}
                   onOpen={() => { setSelP(p); go('product'); }}
                 />
               ))
@@ -187,7 +181,7 @@ function AppContent() {
           }}>
             {screen === 'home' && (
               <HomeScreen
-                cart={cart} addToCart={addToCart} dec={dec} floatMap={floatMap}
+                cart={cart} addToCart={addToCart} dec={dec}
                 onCat={id => go('cat', id)}
                 onOpen={p => { setSelP(p); go('product'); }}
               />
@@ -196,7 +190,7 @@ function AppContent() {
             {screen === 'cat' && catMeta && (
               <CategoryScreen
                 cat={catMeta} products={catProds}
-                cart={cart} addToCart={addToCart} dec={dec} floatMap={floatMap}
+                cart={cart} addToCart={addToCart} dec={dec}
                 onOpen={p => { setSelP(p); go('product'); }}
                 onBack={() => go('home')}
               />
