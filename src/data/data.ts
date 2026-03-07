@@ -460,6 +460,23 @@ export const PRODUCTS: Product[] = [
         desc: 'Provides Lubrication and corrosion protection of Chain & sprockets for Bikes, Motorbikes, Cars| Avoid Sling Off & Prevent Chain breakage | Extended Chain Life',
         specs: ['Provides Lubrication and corrosion protection of Chain & sprockets for Bikes, Motorbikes, Cars','Avoid Sling Off & Prevent Chain breakage','Extended Chain Life'],
     },
+     {
+        id: 27,
+        name: 'Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles',
+        cat: 'bike',
+        sub: 'chain-spray',
+        category: 'bike',
+        price: 110,
+        orig: 250,
+        unit: '1',
+        rating: 4.5,
+        reviews: 176,
+        stock: 10,
+        image: '/biike/chain_clean_brush.png',
+        tag: null,
+        desc: 'Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles Ideal for Quick Cleaning of Cycles, Motorcycles',
+        specs: ['Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles Ideal for Quick Cleaning of Cycles, Motorcycles','Avoid Sling Off & Prevent Chain breakage','Extended Chain Life'],
+    },
 ];
 
 // ========================================
@@ -478,6 +495,7 @@ export const CATS_META: CategoryMeta[] = [
     // { id: 'grocery', name: 'Groceries', sub: 'Oils & essentials', image: '/categorie/grocessories.png' },
     { id: 'tools', name: 'Tools', sub: 'Taparia, 3M & more', image: '/categorie/tools.png' },
     { id: 'bike', name: 'Bike', sub: 'Car Care', image: '/categorie/bike.png' },
+    // { id: 'cloth', name: 'Polish Cloths', sub: 'Car Care', image: '/categorie/cloth.png' },
 ];
 
 // ========================================
