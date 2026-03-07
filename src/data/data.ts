@@ -390,9 +390,9 @@ interface CategoryMeta {
 export const CATS_META: CategoryMeta[] = [
     { id: 'car', name: 'Car Care', sub: 'Liqui Moly & more', image: '/categorie/car.png' },
     { id: 'dry-fruits', name: 'Dry Fruits', sub: 'Fresh & nutritious', image: '/dry_fruits/kaju.png' },
-    { id: 'grocery', name: 'Groceries', sub: 'Oils & essentials', image: '/categorie/grocessories.png' },
+    // { id: 'grocery', name: 'Groceries', sub: 'Oils & essentials', image: '/categorie/grocessories.png' },
     { id: 'tools', name: 'Tools', sub: 'Taparia, 3M & more', image: '/categorie/tools.png' },
-     { id: 'bike', name: 'Bike', sub: 'Car Care', image: '/categorie/bike.png' },
+    { id: 'bike', name: 'Bike', sub: 'Car Care', image: '/categorie/bike.png' },
 ];
 
 // ========================================
