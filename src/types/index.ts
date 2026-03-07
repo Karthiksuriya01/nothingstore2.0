@@ -20,11 +20,12 @@ export interface Category {
   id: string;
   name: string;
   sub: string;
-  grad: string;
-  icon: string; // lucide icon name
+  image: string; // category image
+  icon?: string; // lucide icon name
 }
 
 export interface Banner {
+  id: string;
   grad: string;
   tag: string;
   title: string;
@@ -39,6 +40,12 @@ export interface SubCategory {
   icon: string;
 }
 
-export type Screen = 'home' | 'cat' | 'product' | 'cart' | 'suggest';
+export interface Story {
+  id: string;
+  catId: string;
+  image: string;
+}
+
+export type Screen = 'home' | 'cat' | 'product' | 'cart' | 'suggest' | 'admin';
 
 export type CartState = Record<number, number>;

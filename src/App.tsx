@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { C, sm, WA } from './constants/theme';
-import { PRODUCTS } from './data/products';
-import { CATS_META } from './data/categories';
+import { DataProvider, useData } from './context/DataContext';
 import type { Screen, CartState } from './types';
 import Header from './components/Header';
 import BottomNav from './components/BottomNav';
@@ -12,9 +11,11 @@ import CategoryScreen from './screens/CategoryScreen';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 import SuggestScreen from './screens/SuggestScreen';
+import AdminScreen from './screens/AdminScreen';
 import type { Product } from './types';
 
-export default function App() {
+function AppContent() {
+  const { products: PRODUCTS, categories: CATS_META } = useData();
   const [screen, setScreen] = useState<Screen>('home');
   const [activeCat, setActiveCat] = useState<string | null>(null);
   const [selP, setSelP] = useState<Product | null>(null);
@@ -90,6 +91,7 @@ export default function App() {
           search={search}
           setSearch={setSearch}
           onCartClick={() => go('cart')}
+          onAdminClick={() => go('admin')}
         />
       )}
 
@@ -220,6 +222,8 @@ export default function App() {
             )}
 
             {screen === 'suggest' && <SuggestScreen />}
+
+            {screen === 'admin' && <AdminScreen onBack={() => go('home')} />}
           </div>
         )}
       </div>
@@ -234,7 +238,7 @@ export default function App() {
       )}
 
       {/* BOTTOM NAV */}
-      {!isProd && (
+      {!isProd && screen !== 'admin' && (
         <BottomNav
           screen={screen}
           onNav={(sc, catId) => sc === 'cat' ? go('cat', catId ?? activeCat) : go(sc)}
@@ -244,3 +248,12 @@ export default function App() {
     </div>
   );
 }
+
+export default function App() {
+  return (
+    <DataProvider>
+      <AppContent />
+    </DataProvider>
+  );
+}
+

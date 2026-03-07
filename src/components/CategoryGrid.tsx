@@ -1,9 +1,6 @@
-import React from 'react';
-import * as LucideIcons from 'lucide-react';
 import { ChevronRight } from 'lucide-react';
 import { C, sm } from '../constants/theme';
-import { CATS_META, CAT_ICONS } from '../data/categories';
-import { PRODUCTS } from '../data/products';
+import { useData } from '../context/DataContext';
 
 interface CategoryGridProps {
     onCat: (id: string) => void;
@@ -16,14 +13,14 @@ function Label({ text }: { text: string }) {
 }
 
 export default function CategoryGrid({ onCat }: CategoryGridProps) {
+    const { categories, products } = useData();
+
     return (
         <div style={{ padding: '26px 18px 0' }}>
             <Label text="Shop by Category" />
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 13, marginTop: 14 }}>
-                {CATS_META.map((c, i) => {
-                    const iconName = CAT_ICONS[c.id] || 'ShoppingBag';
-                    const IconComp = (LucideIcons as unknown as Record<string, React.ElementType>)[iconName];
-                    const count = PRODUCTS.filter(p => p.cat === c.id).length;
+                {categories.map((c, i) => {
+                    const count = products.filter(p => p.cat === c.id).length;
                     return (
                         <div key={c.id}
                             onClick={() => onCat(c.id)}
@@ -38,12 +35,11 @@ export default function CategoryGrid({ onCat }: CategoryGridProps) {
                             onMouseUp={e => { (e.currentTarget as HTMLDivElement).style.transform = ''; }}
                         >
                             <div style={{
-                                height: 90, background: c.grad,
+                                height: 90, backgroundImage: `url('${c.image}')`, backgroundSize: 'cover', backgroundPosition: 'center',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                                 position: 'relative', overflow: 'hidden',
                             }}>
-                                <div style={{ position: 'absolute', right: -14, top: -14, width: 70, height: 70, borderRadius: '50%', background: 'rgba(255,255,255,.1)' }} />
-                                {IconComp && <IconComp size={38} color="rgba(255,255,255,0.9)" strokeWidth={1.5} style={{ position: 'relative', zIndex: 1, filter: 'drop-shadow(0 4px 10px rgba(0,0,0,.22))' }} />}
+                                <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.2)' }} />
                             </div>
                             <div style={{ padding: '11px 13px 14px' }}>
                                 <p style={{ fontSize: 14, fontWeight: 700, color: C.text, letterSpacing: '-0.3px' }}>{c.name}</p>

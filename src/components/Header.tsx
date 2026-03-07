@@ -1,5 +1,5 @@
 
-import { ShoppingCart, Search, X } from 'lucide-react';
+import { ShoppingCart, Search, X, Settings } from 'lucide-react';
 import { C, sm } from '../constants/theme';
 
 interface HeaderProps {
@@ -9,9 +9,10 @@ interface HeaderProps {
     search: string;
     setSearch: (v: string) => void;
     onCartClick: () => void;
+    onAdminClick: () => void;
 }
 
-export default function Header({ totalQty, totalPrice, cartBump, search, setSearch, onCartClick }: HeaderProps) {
+export default function Header({ totalQty, totalPrice, cartBump, search, setSearch, onCartClick, onAdminClick }: HeaderProps) {
     return (
         <div style={{
             background: '#fff',
@@ -20,9 +21,14 @@ export default function Header({ totalQty, totalPrice, cartBump, search, setSear
             position: 'sticky', top: 0, zIndex: 60,
         }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-                <div style={{ lineHeight: 1 }}>
-                    <span style={{ fontSize: 24, fontWeight: 800, letterSpacing: '-1.2px', color: '#111' }}>nothing</span>
-                    <span style={{ fontSize: 24, fontWeight: 300, letterSpacing: '-1.2px', color: '#bbb' }}>store</span>
+                <div style={{ lineHeight: 1, display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <div>
+                        <span style={{ fontSize: 24, fontWeight: 800, letterSpacing: '-1.2px', color: '#111' }}>nothing</span>
+                        <span style={{ fontSize: 24, fontWeight: 300, letterSpacing: '-1.2px', color: '#bbb' }}>store</span>
+                    </div>
+                    <button onClick={onAdminClick} style={{ background: 'none', border: 'none', padding: 4, cursor: 'pointer', display: 'flex' }}>
+                        <Settings size={16} color={C.textLight} />
+                    </button>
                 </div>
                 <button
                     onClick={onCartClick}
