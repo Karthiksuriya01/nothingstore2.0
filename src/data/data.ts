@@ -862,10 +862,11 @@ export const CAT_ICONS: Record<string, string> = {
 // catId must match a category id (e.g. 'car', 'dry-fruits', 'tools', 'grocery', 'bike')
 // image can be a local path like '/banner/liquimoly.png' or an external URL
 export const STORIES: Story[] = [
-    { id: 's_1', catId: 'bike', image: '/story/bike/chainspray.png', productId: 23 },
-    { id: 's_2', catId: 'bike', image: '/story/bike/chainspray.png', productId: 22 },
-    { id: 's_3', catId: 'bike', image: '/story/bike/chainspray.png', productId: 21 },
-    { id: 's_4', catId: 'bike', image: '/story/bike/chainspray.png', productId: 26 },
+    { id: 's_1', catId: 'bike', image: '/story/bike/motulposter.png', },
+    { id: 's_2', catId: 'bike', image: '/story/bike/chainspray.png', productId: 23 },
+    { id: 's_3', catId: 'bike', image: '/story/bike/motomax.png', productId: 26 },
+    { id: 's_3', catId: 'car', image: '/story/car/liquimoly.png'},
+    { id: 's_4', catId: 'car', image: '/story/car/engineflush.png', productId: 6 },
 ];
 
 // ========================================
