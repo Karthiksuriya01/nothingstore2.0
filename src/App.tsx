@@ -192,6 +192,7 @@ function AppContent() {
                 cart={cart} addToCart={addToCart} dec={dec}
                 onCat={id => go('cat', id)}
                 onOpen={p => { setSelP(p); go('product'); }}
+                onSeeAllCats={() => go('cats')}
               />
             )}
 

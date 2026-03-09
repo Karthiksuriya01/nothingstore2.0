@@ -13,13 +13,14 @@ interface HomeScreenProps {
     dec: (id: number, e?: React.MouseEvent) => void;
     onCat: (id: string) => void;
     onOpen: (p: Product) => void;
+    onSeeAllCats: () => void;
 }
 
 function Label({ text }: { text: string }) {
     return <p style={{ fontSize: 11, fontWeight: 700, color: '#9BB8A4', letterSpacing: 1, textTransform: 'uppercase' }}>{text}</p>;
 }
 
-export default function HomeScreen({ cart, addToCart, dec, onCat, onOpen }: HomeScreenProps) {
+export default function HomeScreen({ cart, addToCart, dec, onCat, onOpen, onSeeAllCats }: HomeScreenProps) {
     const { products, stories, categories } = useData();
     const [selectedStoryCat, setSelectedStoryCat] = useState<string | null>(null);
 
@@ -63,7 +64,7 @@ export default function HomeScreen({ cart, addToCart, dec, onCat, onOpen }: Home
             )}
 
             {/* <Carousel /> */}
-            <CategoryGrid onCat={onCat} limit={4} />
+            <CategoryGrid onCat={onCat} limit={4} onSeeAll={onSeeAllCats} />
 
             <div style={{ padding: '26px 0 0' }}>
                 <div style={{ padding: '0 18px' }}>
