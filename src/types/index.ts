@@ -40,11 +40,11 @@ export interface SubCategory {
   label: string;
   icon: string;
 }
-
 export interface Story {
   id: string;
   catId: string;
   image: string;
+  productId?: number;
 }
 
 export type Screen = 'home' | 'cats' | 'cat' | 'product' | 'cart' | 'suggest';

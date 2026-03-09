@@ -598,7 +598,7 @@ export const PRODUCTS: Product[] = [
         tag: null,
         desc: 'Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles Ideal for Quick Cleaning of Cycles, Motorcycles',
         specs: ['Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles Ideal for Quick Cleaning of Cycles, Motorcycles', 'Avoid Sling Off & Prevent Chain breakage', 'Extended Chain Life'],
-    },{
+    }, {
         id: 45,
         name: 'Ceat 3.00 - 18 Packed Bike Tube (100442), black, 45.7 x 45.7 x 7.6 cm',
         cat: 'bike',
@@ -707,7 +707,7 @@ export const PRODUCTS: Product[] = [
         desc: 'Instantly Cleans, Polishes and Shines Motorbikes, Scooters, Cars | Useful for Plastic, Metal, Tyre & Rubber Parts,',
         specs: ['Instantly Cleans', 'Useful for Plastic, Metal, Tyre & Rubber Parts,'],
     },
-    
+
     {
         id: 33,
         name: 'Mario Spray Paint Red (400ml) ',
@@ -862,8 +862,10 @@ export const CAT_ICONS: Record<string, string> = {
 // catId must match a category id (e.g. 'car', 'dry-fruits', 'tools', 'grocery', 'bike')
 // image can be a local path like '/banner/liquimoly.png' or an external URL
 export const STORIES: Story[] = [
-    { id: 's_1', catId: 'car', image: '/banner/liquimoly.png' },
-    { id: 's_2', catId: 'dry-fruits', image: '/banner/dryfruits.png' },
+    { id: 's_1', catId: 'bike', image: '/story/bike/chainspray.png', productId: 23 },
+    { id: 's_2', catId: 'bike', image: '/story/bike/chainspray.png', productId: 22 },
+    { id: 's_3', catId: 'bike', image: '/story/bike/chainspray.png', productId: 21 },
+    { id: 's_4', catId: 'bike', image: '/story/bike/chainspray.png', productId: 26 },
 ];
 
 // ========================================

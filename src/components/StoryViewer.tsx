@@ -6,9 +6,10 @@ interface StoryViewerProps {
     stories: Story[];
     category: Category;
     onClose: () => void;
+    onOrderNow?: (productId: number) => void;
 }
 
-export default function StoryViewer({ stories, category, onClose }: StoryViewerProps) {
+export default function StoryViewer({ stories, category, onClose, onOrderNow }: StoryViewerProps) {
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
@@ -74,14 +75,42 @@ export default function StoryViewer({ stories, category, onClose }: StoryViewerP
             {/* Tap Area and Image */}
             <div onClick={handleTap} style={{ flex: 1, position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', background: '#000' }}>
                 {stories[index] && (
-                    <img
-                        src={stories[index].image || 'https://images.unsplash.com/photo-1549590776-15485f4bebed?w=500&h=800&fit=crop'}
-                        alt="Story"
-                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                        onError={(e) => {
-                            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1625948515291-69613efd103f?w=500&h=800&fit=crop';
-                        }}
-                    />
+                    <>
+                        <img
+                            src={stories[index].image || 'https://images.unsplash.com/photo-1549590776-15485f4bebed?w=500&h=800&fit=crop'}
+                            alt="Story"
+                            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                            onError={(e) => {
+                                (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1625948515291-69613efd103f?w=500&h=800&fit=crop';
+                            }}
+                        />
+                        {stories[index].productId && onOrderNow && (
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    onOrderNow(stories[index].productId!);
+                                }}
+                                style={{
+                                    position: 'absolute',
+                                    bottom: 40,
+                                    left: '50%',
+                                    transform: 'translateX(-50%)',
+                                    background: '#fff',
+                                    color: '#000',
+                                    border: 'none',
+                                    padding: '12px 24px',
+                                    borderRadius: 24,
+                                    fontWeight: 600,
+                                    fontSize: 16,
+                                    boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                                    cursor: 'pointer',
+                                    zIndex: 20
+                                }}
+                            >
+                                Order Now
+                            </button>
+                        )}
+                    </>
                 )}
             </div>
         </div>

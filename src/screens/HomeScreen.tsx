@@ -47,6 +47,11 @@ export default function HomeScreen({ cart, addToCart, dec, onCat, onOpen, onSeeA
                     stories={viewingStories}
                     category={viewingCat}
                     onClose={() => setSelectedStoryCat(null)}
+                    onOrderNow={(productId) => {
+                        setSelectedStoryCat(null);
+                        const product = products.find(p => p.id === productId);
+                        if (product) onOpen(product);
+                    }}
                 />
             )}
 
