@@ -24,9 +24,10 @@ export default function HomeScreen({ cart, addToCart, dec, onCat, onOpen, onSeeA
     const { products, stories, categories } = useData();
     const [selectedStoryCat, setSelectedStoryCat] = useState<string | null>(null);
 
-    // Mix up latest products so consecutive items aren't from the same category
+    // Randomize latest products on refresh
+    const shuffledProducts = [...products].sort(() => Math.random() - 0.5);
     const mixedLatest: Product[] = [];
-    const reversed = [...products].reverse();
+    const reversed = [...shuffledProducts].reverse();
     const MAX_LATEST = 12;
     while (reversed.length > 0 && mixedLatest.length < MAX_LATEST) {
         let lastCat = mixedLatest.length > 0 ? mixedLatest[mixedLatest.length - 1].cat : null;
