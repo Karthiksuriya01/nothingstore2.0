@@ -756,8 +756,8 @@ export const PRODUCTS: Product[] = [
         rating: 4.5,
         reviews: 176,
         stock: 10,
-        image: '/cloths/1200gsm/image2.png',
-        images: ['/cloths/1200gsm/image1.png', '/cloths/1200gsm/image2.png', '/cloths/1200gsm/image3.png'],
+        image: '/cloths/1200gsm/image1.png',
+        images: ['/cloths/1200gsm/image1.png', '/cloths/1200gsm/image2.png', '/cloths/1200gsm/image3.png','/cloths/1200gsm/image4.png'],
         tag: null,
         desc: '1200 GSM- SUPER THICK CAR CLOTH: High density, Thick lint, very soft and does not damage a paint of the car. Strong water absorption, a piece of cloth can absorb up to 10 times their own weight of water, greatly reducing the drying time.',
         specs: ['High density', ' Thick lint', ' very soft and does not damage a paint of the car.', 'Strong water absorption'],
@@ -907,7 +907,7 @@ export const CATS_META: CategoryMeta[] = [
     // { id: 'grocery', name: 'Groceries', sub: 'Oils & essentials', image: '/categorie/grocessories.png' },
     { id: 'tools', name: 'Tools', sub: 'Taparia, 3M & more', image: '/categorie/tools.png' },
     { id: 'bike', name: 'Bike', sub: 'Car Care', image: '/categorie/bike.png' },
-    { id: 'cloth', name: 'Polish Cloths', sub: 'Car Care', image: '/categorie/cloth.png' },
+    { id: 'cloth', name: 'Cloths', sub: 'Cloth', image: '/categorie/cloth.png' },
     { id: 'paint', name: 'Paint', sub: 'Paint', image: '/categorie/paint.png' },
     { id: 'Home & Living', name: 'Home & Living', sub: 'Chairs', image: '/categorie/chair.png' },
 
@@ -981,6 +981,8 @@ export const STORIES: Story[] = [
     { id: 's_7', catId: 'bike', image: '/story/bike/bikeshinemotomax.png', productId: 32 },
     { id: 's_4', catId: 'car', image: '/story/car/liquimoly.png' },
     { id: 's_5', catId: 'car', image: '/story/car/engineflush.png', productId: 6 },
+    { id: 's_6', catId: 'tools', image: '/story/Tools/image.png' },
+    { id: 's_7', catId: 'cloth', image: '/story/cloth/image.png' },
 ];
 
 // ========================================
