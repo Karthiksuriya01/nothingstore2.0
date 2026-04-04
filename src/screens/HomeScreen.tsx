@@ -59,11 +59,10 @@ export default function HomeScreen({ cart, addToCart, dec, onCat, onOpen, onSeeA
             {activeCats.length > 0 && (
                 <div style={{ display: 'flex', gap: 14, overflowX: 'auto', padding: '16px 18px 0', WebkitOverflowScrolling: 'touch' }}>
                     {activeCats.map(c => (
-                        <div key={c.id} onClick={() => setSelectedStoryCat(c.id)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, cursor: 'pointer', flexShrink: 0 }}>
+                        <div key={c.id} onClick={() => setSelectedStoryCat(c.id)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', cursor: 'pointer', flexShrink: 0 }}>
                             <div style={{ width: 66, height: 66, borderRadius: 33, padding: 3, background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)' }}>
                                 <div style={{ width: '100%', height: '100%', borderRadius: 33, border: '2px solid #fff', overflow: 'hidden', backgroundImage: `url('${c.image}')`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
                             </div>
-                            <span style={{ fontSize: 11, fontWeight: 500, color: '#333' }}>{c.name.split(' ')[0]}</span>
                         </div>
                     ))}
                 </div>
