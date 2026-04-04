@@ -35,8 +35,8 @@ export default function AddToCartControl({ p, qty, addToCart, dec, small = false
                     whiteSpace: 'nowrap',
                     transition: `transform .14s ${sm}`,
                 }}
-                onMouseDown={e => { (e.currentTarget as HTMLButtonElement).style.transform = 'scale(0.93)'; }}
-                onMouseUp={e => { (e.currentTarget as HTMLButtonElement).style.transform = ''; }}
+                onTouchStart={e => { (e.currentTarget as HTMLButtonElement).style.transform = 'scale(0.93)'; }}
+                onTouchEnd={e => { (e.currentTarget as HTMLButtonElement).style.transform = ''; }}
             >
                 <Plus size={small ? 11 : 13} color={C.primary} strokeWidth={2.8} />
                 {!small && 'ADD'}
@@ -56,6 +56,7 @@ export default function AddToCartControl({ p, qty, addToCart, dec, small = false
                 borderRadius: 10,
                 padding: small ? '0 10px' : '0 12px',
                 boxShadow: `0 3px 10px rgba(26,158,71,.32)`,
+                animation: 'popIn .25s cubic-bezier(0.34,1.56,0.64,1)',
             }}
         >
             <button

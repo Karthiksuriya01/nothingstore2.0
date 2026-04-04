@@ -36,8 +36,8 @@ export default function GridCard({ p, cart, addToCart, dec, onOpen }: GridCardPr
                 display: 'flex', flexDirection: 'column',   /* equal card heights */
                 transition: `transform .18s ${sm}`,
             }}
-            onMouseDown={e => { (e.currentTarget as HTMLDivElement).style.transform = 'scale(0.97)'; }}
-            onMouseUp={e => { (e.currentTarget as HTMLDivElement).style.transform = ''; }}
+            onTouchStart={e => { (e.currentTarget as HTMLDivElement).style.transform = 'scale(0.97)'; }}
+            onTouchEnd={e => { (e.currentTarget as HTMLDivElement).style.transform = ''; }}
         >
             {/* ── Image zone — image fills the full area ── */}
             <div style={{

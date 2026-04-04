@@ -47,7 +47,7 @@ export default function Header({ totalQty, totalPrice, search, setSearch, onCart
                 background: C.surface, borderRadius: 12,
                 display: 'flex', alignItems: 'center', padding: '11px 14px', gap: 9,
                 border: `1.5px solid ${search ? '#111' : C.border}`,
-                transition: `border-color .18s ${sm}`,
+                transition: `border-color .25s ease`,
             }}>
                 <Search size={15} color={C.textLight} strokeWidth={2} />
                 <input

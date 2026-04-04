@@ -44,8 +44,8 @@ export default function CategoryGrid({ onCat, limit, onSeeAll }: CategoryGridPro
                                 boxShadow: `0 2px 14px rgba(26,158,71,.07)`,
                                 cursor: 'pointer', transition: `transform .18s ${sm}`,
                             }}
-                            onMouseDown={e => { (e.currentTarget as HTMLDivElement).style.transform = 'scale(0.97)'; }}
-                            onMouseUp={e => { (e.currentTarget as HTMLDivElement).style.transform = ''; }}
+                            onTouchStart={e => { (e.currentTarget as HTMLDivElement).style.transform = 'scale(0.97)'; }}
+                            onTouchEnd={e => { (e.currentTarget as HTMLDivElement).style.transform = ''; }}
                         >
                             <div style={{
                                 height: 90, backgroundImage: `url('${c.image}')`, backgroundSize: 'cover', backgroundPosition: 'center',

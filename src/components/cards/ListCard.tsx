@@ -27,8 +27,8 @@ export default function ListCard({ p, cart, addToCart, dec, onOpen }: ListCardPr
                 border: `1px solid ${C.border}`, boxShadow: `0 2px 10px rgba(26,158,71,.05)`,
                 cursor: 'pointer', transition: `transform .18s ${sm}, box-shadow .18s ${sm}`,
             }}
-            onMouseDown={e => { (e.currentTarget as HTMLDivElement).style.transform = 'scale(0.97)'; }}
-            onMouseUp={e => { (e.currentTarget as HTMLDivElement).style.transform = ''; }}
+            onTouchStart={e => { (e.currentTarget as HTMLDivElement).style.transform = 'scale(0.97)'; }}
+            onTouchEnd={e => { (e.currentTarget as HTMLDivElement).style.transform = ''; }}
         >
             <ProductImage id={p.id} size={62} radius={14} />
             <div style={{ flex: 1, minWidth: 0 }}>

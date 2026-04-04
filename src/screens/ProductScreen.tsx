@@ -18,9 +18,7 @@ const catLabel: Record<string, string> = {
     car: 'Car Care', tools: 'Tools', 'dry-fruits': 'Dry Fruits', grocery: 'Groceries',
 };
 
-const FALLBACK_ICONS: Record<string, string> = {
-    car: '#DCFCE7', 'dry-fruits': '#FEF3C7', grocery: '#D1FAE5', tools: '#FEF9C3',
-};
+const FALLBACK_BG = '#fff';
 
 export default function ProductScreen({ p, cart, addToCart, dec, onBack, onGoCart, onOpen }: ProdScreenProps) {
     const qty = cart[p.id] || 0;
@@ -58,7 +56,7 @@ export default function ProductScreen({ p, cart, addToCart, dec, onBack, onGoCar
                         <>
                             <div style={{
                                 height: 260,
-                                background: FALLBACK_ICONS[p.cat] || '#f8f8f8',
+                                background: FALLBACK_BG,
                                 borderRadius: 24, margin: '18px 0 12px',
                                 position: 'relative', overflow: 'hidden', flexShrink: 0
                             }}>
@@ -70,7 +68,7 @@ export default function ProductScreen({ p, cart, addToCart, dec, onBack, onGoCar
                                         <div key={idx} onClick={() => setActiveImg(idx)} style={{
                                             width: 60, height: 60, borderRadius: 14, cursor: 'pointer', flexShrink: 0,
                                             border: `2px solid ${activeImg === idx ? C.primary : 'transparent'}`,
-                                            background: FALLBACK_ICONS[p.cat] || '#f8f8f8', position: 'relative', overflow: 'hidden',
+                                            background: FALLBACK_BG, position: 'relative', overflow: 'hidden',
                                             transition: 'border-color 0.2s', padding: 4
                                         }}>
                                             <img src={img} style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: 10 }} />
@@ -82,7 +80,7 @@ export default function ProductScreen({ p, cart, addToCart, dec, onBack, onGoCar
                     ) : (
                         <div style={{
                             height: 260,
-                            background: FALLBACK_ICONS[p.cat] || '#f8f8f8',
+                            background: FALLBACK_BG,
                             borderRadius: 24, margin: '18px 0',
                             position: 'relative', overflow: 'hidden',
                         }}>
@@ -166,8 +164,8 @@ export default function ProductScreen({ p, cart, addToCart, dec, onBack, onGoCar
                                                 boxShadow: `0 2px 10px rgba(26,158,71,.06)`,
                                                 transition: `transform .18s ${sm}`,
                                             }}
-                                            onMouseDown={e => { (e.currentTarget as HTMLDivElement).style.transform = 'scale(0.96)'; }}
-                                            onMouseUp={e => { (e.currentTarget as HTMLDivElement).style.transform = ''; }}
+                                            onTouchStart={e => { (e.currentTarget as HTMLDivElement).style.transform = 'scale(0.96)'; }}
+                                            onTouchEnd={e => { (e.currentTarget as HTMLDivElement).style.transform = ''; }}
                                         >
                                             {/* Image */}
                                             <div style={{ height: 100, background: '#fff', position: 'relative', borderBottom: `1px solid ${C.border}` }}>

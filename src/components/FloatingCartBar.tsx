@@ -13,7 +13,7 @@ export default function FloatingCartBar({ totalQty, totalPrice, onCheckout }: Fl
             maxWidth: 398, margin: '0 auto',
             background: '#111', borderRadius: 16, padding: '13px 16px',
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            zIndex: 90, animation: `slideUpIn .28s ease-out`,
+            zIndex: 90, animation: `slideUpIn .35s cubic-bezier(0.34, 1.56, 0.64, 1)`,
             boxShadow: `0 4px 20px rgba(0,0,0,.18)`,
         }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
