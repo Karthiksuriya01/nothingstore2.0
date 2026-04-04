@@ -83,7 +83,7 @@ export default function CatGridCard({ p, cart, addToCart, dec, onOpen }: CatGrid
 
             {/* ── Info section ── */}
             <div style={{ padding: '9px 10px 11px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                <p style={{ fontSize: 12, fontWeight: 600, color: C.text, letterSpacing: '-0.2px', lineHeight: 1.3, marginBottom: 2, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.name}</p>
+                <p style={{ fontSize: 12, fontWeight: 600, color: C.text, letterSpacing: '-0.2px', lineHeight: 1.3, marginBottom: 2, minHeight: '2.6em', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.name}</p>
                 <p style={{ fontSize: 10, color: C.textLight, marginBottom: 'auto', paddingBottom: 8, fontWeight: 500 }}>{p.unit}</p>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 4 }}>
                     <div>

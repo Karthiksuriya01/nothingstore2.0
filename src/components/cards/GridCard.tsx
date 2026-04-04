@@ -89,7 +89,7 @@ export default function GridCard({ p, cart, addToCart, dec, onOpen }: GridCardPr
 
             {/* ── Info section — flex:1 so all cards same height ── */}
             <div style={{ padding: '11px 13px 13px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                <p style={{ fontSize: 13, fontWeight: 600, color: C.text, letterSpacing: '-0.3px', lineHeight: 1.35, marginBottom: 2, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.name}</p>
+                <p style={{ fontSize: 13, fontWeight: 600, color: C.text, letterSpacing: '-0.3px', lineHeight: 1.35, marginBottom: 2, minHeight: '2.7em', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.name}</p>
                 <p style={{ fontSize: 11, color: C.textLight, marginBottom: 5, fontWeight: 500 }}>{p.unit}</p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginBottom: 10 }}>
                     <Star size={12} fill="#FBBF24" color="#FBBF24" />
