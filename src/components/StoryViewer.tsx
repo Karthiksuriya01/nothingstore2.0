@@ -58,7 +58,7 @@ export default function StoryViewer({ stories, category, onClose, onOrderNow }: 
                         }} />
                     </div>
                 ))}
-            </div>
+            </div> 
 
             {/* Header */}
             <div style={{
@@ -67,7 +67,7 @@ export default function StoryViewer({ stories, category, onClose, onOrderNow }: 
             }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                     <img src={category.image} alt="" style={{ width: 32, height: 32, borderRadius: 16, objectFit: 'cover', background: '#ddd' }} />
-                    <span style={{ fontWeight: 600, fontSize: 14, textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>{category.name}</span>
+                    {/* <span style={{ fontWeight: 600, fontSize: 14, textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>{category.name}</span> */}
                 </div>
                 <button onClick={onClose} style={{ background: 'none', border: 'none', color: '#fff', fontSize: 28, textShadow: '0 1px 4px rgba(0,0,0,0.5)', cursor: 'pointer' }}>&times;</button>
             </div>

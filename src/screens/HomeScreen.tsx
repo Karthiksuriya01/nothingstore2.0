@@ -3,7 +3,7 @@ import { useData } from '../context/DataContext';
 import StoryViewer from '../components/StoryViewer';
 import { sm } from '../constants/theme';
 import type { Product, CartState } from '../types';
-// import Carousel from '../components/Carousel';
+import Carousel from '../components/Carousel';
 import CategoryGrid from '../components/CategoryGrid';
 import GridCard from '../components/cards/GridCard';
 
@@ -69,7 +69,7 @@ export default function HomeScreen({ cart, addToCart, dec, onCat, onOpen, onSeeA
                 </div>
             )}
 
-            {/* <Carousel /> */}
+            <Carousel />
             <CategoryGrid onCat={onCat} limit={4} onSeeAll={onSeeAllCats} />
 
             <div style={{ padding: '26px 0 0' }}>
