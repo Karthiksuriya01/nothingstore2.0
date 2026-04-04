@@ -21,9 +21,9 @@ function Label({ text }: { text: string }) {
 }
 
 export default function HomeScreen({ cart, addToCart, dec, onCat, onOpen, onSeeAllCats }: HomeScreenProps) {
-    const { products, stories, categories } = useData();
-    const [selectedStoryCat, setSelectedStoryCat] = useState<string | null>(null);
-
+    // const { products, stories, categories } = useData();
+    // const [selectedStoryCat, setSelectedStoryCat] = useState<string | null>(null);
+    const { products } = useData();
     // Randomize latest products on refresh
     const shuffledProducts = [...products].sort(() => Math.random() - 0.5);
     const mixedLatest: Product[] = [];
@@ -37,13 +37,13 @@ export default function HomeScreen({ cart, addToCart, dec, onCat, onOpen, onSeeA
         reversed.splice(idx, 1);
     }
 
-    const activeCats = categories.filter(c => stories.some(s => s.catId === c.id));
-    const viewingStories = stories.filter(s => s.catId === selectedStoryCat);
-    const viewingCat = categories.find(c => c.id === selectedStoryCat);
+    // const activeCats = categories.filter(c => stories.some(s => s.catId === c.id));
+    // const viewingStories = stories.filter(s => s.catId === selectedStoryCat);
+    // const viewingCat = categories.find(c => c.id === selectedStoryCat);
 
     return (
         <>
-            {selectedStoryCat && viewingCat && viewingStories.length > 0 && (
+            {/* {selectedStoryCat && viewingCat && viewingStories.length > 0 && (
                 <StoryViewer
                     stories={viewingStories}
                     category={viewingCat}
@@ -66,8 +66,8 @@ export default function HomeScreen({ cart, addToCart, dec, onCat, onOpen, onSeeA
                         </div>
                     ))}
                 </div>
-            )}
-
+            )} */}
+          
             <Carousel />
             <CategoryGrid onCat={onCat} limit={4} onSeeAll={onSeeAllCats} />
 
