@@ -218,7 +218,7 @@ export const PRODUCTS: Product[] = [
         reviews: 110,
         stock: 20,
         image: '/Horns/Root/image.png',
-        images:['/Horns/Root/image.png','/Horns/Root/image1.png','/Horns/Root/image2.png'],
+        images: ['/Horns/Root/image.png', '/Horns/Root/image1.png', '/Horns/Root/image2.png'],
         tag: null,
         desc: 'Diesel particle filter cleaner (1L). Large format DPF cleaner for commercial and industrial applications.',
         specs: ['DPF Cleaner', '1L Bottle', 'Commercial Grade', 'High Volume', 'Professional Application', 'Superior Performance'],
@@ -432,7 +432,7 @@ export const PRODUCTS: Product[] = [
         desc: 'Taparia 14x15mm Chrome Plated Double Ended Spanner, DEP 14x15. Special Discount for bulk orders',
         specs: ['14x15mm Chrome Plated Double Ended Spanner', 'Professional Quality', 'Comfortable Grip',],
     },
-     {
+    {
         id: 49,
         name: 'Taparia 18x19mm Chrome Plated Double Ended Spanner, DEP',
         cat: 'tools',
@@ -449,8 +449,8 @@ export const PRODUCTS: Product[] = [
         tag: null,
         desc: 'Taparia 18x19mm Chrome Plated Double Ended Spanner, DEP 18x19. Special Discount for bulk orders',
         specs: ['18x19mm Chrome Plated Double Ended Spanner', 'Professional Quality', 'Comfortable Grip',],
-    },      
-     {
+    },
+    {
         id: 50,
         name: 'TAPARIA Adjustable Spanner 255mm 1A 1172-10',
         cat: 'tools',
@@ -746,7 +746,7 @@ export const PRODUCTS: Product[] = [
         desc: 'Fully Synthetic 4-Stroke Oil – 10W-50 formulation with Ester technology for superior engine protection and performance.',
         specs: [' High Performance Protection', ', Smooth Gear Shifting', ' Superior Engine Care for Long-Lasting Riding'],
     },
-     {
+    {
         id: 55,
         name: 'Motul 3000 4T Plus 20W-40 Engine Oil for Bikes 1L',
         cat: 'bike',
@@ -765,7 +765,7 @@ export const PRODUCTS: Product[] = [
         desc: 'Fully Synthetic 4-Stroke Oil – 10W-50 formulation with Ester technology for superior engine protection and performance.',
         specs: [' High Performance Protection', ', Smooth Gear Shifting', ' Superior Engine Care for Long-Lasting Riding'],
     },
-     {
+    {
         id: 56,
         name: 'Motomax Scratch Remover Wax (60 g)',
         cat: 'bike',
@@ -816,7 +816,7 @@ export const PRODUCTS: Product[] = [
         stock: 10,
         image: '/biike/chain_clean_brush.png',
         images: ['/biike/chain_clean_brush.png', '/biike/chain_clean_brush.png', '/biike/chain_clean_brush.png'],
-        tag: null, 
+        tag: null,
         desc: 'Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles Ideal for Quick Cleaning of Cycles, Motorcycles',
         specs: ['Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles Ideal for Quick Cleaning of Cycles, Motorcycles', 'Avoid Sling Off & Prevent Chain breakage', 'Extended Chain Life'],
     }, {
@@ -887,7 +887,7 @@ export const PRODUCTS: Product[] = [
         reviews: 176,
         stock: 10,
         image: '/cloths/1200gsm/image1.png',
-        images: ['/cloths/1200gsm/image1.png', '/cloths/1200gsm/image2.png', '/cloths/1200gsm/image3.png','/cloths/1200gsm/image4.png'],
+        images: ['/cloths/1200gsm/image1.png', '/cloths/1200gsm/image2.png', '/cloths/1200gsm/image3.png', '/cloths/1200gsm/image4.png'],
         tag: null,
         desc: '1200 GSM- SUPER THICK CAR CLOTH: High density, Thick lint, very soft and does not damage a paint of the car. Strong water absorption, a piece of cloth can absorb up to 10 times their own weight of water, greatly reducing the drying time.',
         specs: ['High density', ' Thick lint', ' very soft and does not damage a paint of the car.', 'Strong water absorption'],
@@ -1019,6 +1019,27 @@ export const PRODUCTS: Product[] = [
         desc: 'Instant Dry Spray Paint – Touch-dry in minutes for faster project completion in automotive, furniture and DIY use.',
         specs: ['Excellent Grip on Metal & Plastic', 'Wide Color & Finish Range', ' DIY to Industrial Grade Use ', 'Easy Spray Control'],
     },
+
+    {
+        id: 58,
+        name: 'Funny Susu Boy Shin-chan',
+        cat: 'toys',
+        sub: 'toys',
+        category: 'toys',
+        price: 280,
+        orig: 799,
+        unit: '1pc',
+        rating: 4.5,
+        reviews: 176,
+        stock: 10,
+        image: '/Toys/Funny_Susu_Boy_Shin_chan/image1.png',
+        images: ['/Toys/Funny_Susu_Boy_Shin_chan/image1.png', '/Toys/Funny_Susu_Boy_Shin_chan/image2.png', '/Toys/Funny_Susu_Boy_Shin_chan/image3.png'],
+        tag: null,
+        desc: 'Toys',
+        specs: ['Toys'],
+    },
+
+
 ];
 
 // ========================================
@@ -1033,7 +1054,7 @@ interface CategoryMeta {
 
 export const CATS_META: CategoryMeta[] = [
     { id: 'car', name: 'Car Care', sub: 'Liqui Moly & more', image: '/categorie/car.png' },
-    
+
     // { id: 'grocery', name: 'Groceries', sub: 'Oils & essentials', image: '/categorie/grocessories.png' },
     { id: 'tools', name: 'Tools', sub: 'Taparia, 3M & more', image: '/categorie/tools.png' },
     { id: 'bike', name: 'Bike', sub: 'Car Care', image: '/categorie/bike.png' },
@@ -1041,6 +1062,7 @@ export const CATS_META: CategoryMeta[] = [
     { id: 'paint', name: 'Paint', sub: 'Paint', image: '/categorie/paint.png' },
     { id: 'Home & Living', name: 'Home & Living', sub: 'Chairs', image: '/categorie/chair.png' },
     { id: 'dry-fruits', name: 'Dry Fruits', sub: 'Fresh & nutritious', image: '/dry_fruits/kaju.png' },
+    { id: 'toys', name: 'Toys', sub: 'Toys', image: '/Toys/toybanner.png' },
 
 ];
 
