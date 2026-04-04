@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useData } from '../context/DataContext';
-import StoryViewer from '../components/StoryViewer';
 import { sm } from '../constants/theme';
 import type { Product, CartState } from '../types';
 import Carousel from '../components/Carousel';
@@ -67,7 +66,7 @@ export default function HomeScreen({ cart, addToCart, dec, onCat, onOpen, onSeeA
                     ))}
                 </div>
             )} */}
-          
+
             <Carousel />
             <CategoryGrid onCat={onCat} limit={4} onSeeAll={onSeeAllCats} />
 
