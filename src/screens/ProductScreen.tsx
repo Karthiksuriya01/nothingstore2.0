@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, Star, ArrowRight, Plus, Minus } from 'lucide-react';
+import { ChevronLeft, Star, ArrowRight, Plus, Minus, X, ChevronRight } from 'lucide-react';
 import { C, sm } from '../constants/theme';
 import { disc, PRODUCTS } from '../data/data';
 import type { Product, CartState } from '../types';
@@ -25,6 +25,24 @@ export default function ProductScreen({ p, cart, addToCart, dec, onBack, onGoCar
     const pct = disc(p.orig, p.price);
     const [imgError, setImgError] = useState(false);
     const [activeImg, setActiveImg] = useState(0);
+    const [showImageModal, setShowImageModal] = useState(false);
+    const [modalImageIdx, setModalImageIdx] = useState(0);
+
+    // Get images array
+    const images = (p.images && p.images.length > 0) ? p.images : (p.image ? [p.image] : []);
+
+    const openImageModal = (idx: number) => {
+        setModalImageIdx(idx);
+        setShowImageModal(true);
+    };
+
+    const nextImage = () => {
+        setModalImageIdx((prev) => (prev + 1) % images.length);
+    };
+
+    const prevImage = () => {
+        setModalImageIdx((prev) => (prev - 1 + images.length) % images.length);
+    };
 
     // Related products — same category, exclude current
     const related = PRODUCTS.filter(x => x.cat === p.cat && x.id !== p.id).slice(0, 6);
@@ -54,12 +72,18 @@ export default function ProductScreen({ p, cart, addToCart, dec, onBack, onGoCar
                     {/* Product image(s) */}
                     {p.images && p.images.length > 0 ? (
                         <>
-                            <div style={{
-                                height: 260,
-                                background: FALLBACK_BG,
-                                borderRadius: 24, margin: '18px 0 12px',
-                                position: 'relative', overflow: 'hidden', flexShrink: 0
-                            }}>
+                            <div 
+                                onClick={() => openImageModal(activeImg)}
+                                style={{
+                                    height: 260,
+                                    background: FALLBACK_BG,
+                                    borderRadius: 24, margin: '18px 0 12px',
+                                    position: 'relative', overflow: 'hidden', flexShrink: 0,
+                                    cursor: 'pointer', transition: 'transform 0.2s ease'
+                                }}
+                                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.02)')}
+                                onMouseLeave={(e) => (e.currentTarget.style.transform = '')}
+                            >
                                 <img src={p.images[activeImg]} alt={`${p.name} view ${activeImg + 1}`} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', padding: 20 }} />
                             </div>
                             {p.images.length > 1 && (
@@ -78,12 +102,18 @@ export default function ProductScreen({ p, cart, addToCart, dec, onBack, onGoCar
                             )}
                         </>
                     ) : (
-                        <div style={{
-                            height: 260,
-                            background: FALLBACK_BG,
-                            borderRadius: 24, margin: '18px 0',
-                            position: 'relative', overflow: 'hidden',
-                        }}>
+                        <div 
+                            onClick={() => openImageModal(0)}
+                            style={{
+                                height: 260,
+                                background: FALLBACK_BG,
+                                borderRadius: 24, margin: '18px 0',
+                                position: 'relative', overflow: 'hidden',
+                                cursor: 'pointer', transition: 'transform 0.2s ease'
+                            }}
+                            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.02)')}
+                            onMouseLeave={(e) => (e.currentTarget.style.transform = '')}
+                        >
                             {p.image && !imgError ? (
                                 <img
                                     src={p.image}
@@ -251,6 +281,146 @@ export default function ProductScreen({ p, cart, addToCart, dec, onBack, onGoCar
                     Go to Cart <ArrowRight size={16} color="#fff" strokeWidth={2.5} />
                 </button>
             </div>
+
+            {/* ── Image Fullscreen Modal ── */}
+            {showImageModal && (
+                <div
+                    onClick={() => setShowImageModal(false)}
+                    style={{
+                        position: 'fixed',
+                        inset: 0,
+                        background: 'rgba(0, 0, 0, 0.95)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        zIndex: 9999,
+                        backdropFilter: 'blur(4px)',
+                        padding: '20px',
+                        gap: 16,
+                    }}
+                >
+                    {/* Prevent click propagation on the modal content */}
+                    <div
+                        onClick={(e) => e.stopPropagation()}
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            gap: 16,
+                            height: '100%',
+                            justifyContent: 'center',
+                            maxHeight: 'calc(100vh - 80px)',
+                        }}
+                    >
+                        {/* Product name at top */}
+                        <p style={{ color: '#fff', fontSize: 14, fontWeight: 600, textAlign: 'center', order: 1 }}>
+                            {p.name}
+                        </p>
+
+                        {/* Image container - flexible sizing */}
+                        <div
+                            style={{
+                                flex: 1,
+                                width: '100%',
+                                maxWidth: '90vw',
+                                background: FALLBACK_BG,
+                                borderRadius: 20,
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                overflow: 'hidden',
+                                position: 'relative',
+                                minHeight: '200px',
+                                order: 2,
+                            }}
+                        >
+                            <img
+                                src={images[modalImageIdx]}
+                                alt={`${p.name} ${modalImageIdx + 1}`}
+                                style={{
+                                    maxWidth: '100%',
+                                    maxHeight: '100%',
+                                    objectFit: 'contain',
+                                    padding: '20px',
+                                }}
+                            />
+                        </div>
+
+                        {/* Navigation arrows and counter */}
+                        {images.length > 1 && (
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 16, justifyContent: 'center', order: 3 }}>
+                                <button
+                                    onClick={prevImage}
+                                    style={{
+                                        background: 'rgba(255, 255, 255, 0.2)',
+                                        border: 'none',
+                                        borderRadius: '50%',
+                                        width: 44,
+                                        height: 44,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        cursor: 'pointer',
+                                        transition: 'background 0.2s',
+                                    }}
+                                    onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)')}
+                                    onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)')}
+                                >
+                                    <ChevronLeft size={24} color="#fff" strokeWidth={2} />
+                                </button>
+
+                                <span style={{ color: '#fff', fontSize: 14, fontWeight: 600, minWidth: 60, textAlign: 'center' }}>
+                                    {modalImageIdx + 1} / {images.length}
+                                </span>
+
+                                <button
+                                    onClick={nextImage}
+                                    style={{
+                                        background: 'rgba(255, 255, 255, 0.2)',
+                                        border: 'none',
+                                        borderRadius: '50%',
+                                        width: 44,
+                                        height: 44,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        cursor: 'pointer',
+                                        transition: 'background 0.2s',
+                                    }}
+                                    onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)')}
+                                    onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)')}
+                                >
+                                    <ChevronRight size={24} color="#fff" strokeWidth={2} />
+                                </button>
+                            </div>
+                        )}
+
+                        {/* Close button at bottom center - like Redmi UI */}
+                        <button
+                            onClick={() => setShowImageModal(false)}
+                            style={{
+                                background: 'rgba(255, 255, 255, 0.2)',
+                                border: 'none',
+                                borderRadius: '50%',
+                                width: 48,
+                                height: 48,
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                cursor: 'pointer',
+                                transition: 'background 0.2s',
+                                marginTop: 'auto',
+                                order: 4,
+                            }}
+                            onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)')}
+                            onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)')}
+                        >
+                            <X size={26} color="#fff" strokeWidth={2.5} />
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
