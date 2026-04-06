@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import type { CartState, Product } from '../types';
 
