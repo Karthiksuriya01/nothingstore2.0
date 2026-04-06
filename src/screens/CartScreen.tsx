@@ -17,31 +17,51 @@ interface CartScreenProps {
 
 export default function CartScreen({ cart, addToCart, dec, totalPrice, totalQty, checkout, onBack }: CartScreenProps) {
     return (
-        <div style={{ padding: '20px 18px', paddingBottom: 100 }}>
-            <button
-                onClick={onBack}
-                style={{ background: 'none', border: 'none', fontSize: 14, fontWeight: 600, color: C.textMid, cursor: 'pointer', fontFamily: 'inherit', marginBottom: 20, display: 'flex', alignItems: 'center', gap: 6 }}
-            >
-                <ChevronLeft size={18} color={C.textMid} strokeWidth={2.2} /> Back
-            </button>
-            <p style={{ fontSize: 24, fontWeight: 800, color: C.text, letterSpacing: '-0.7px', marginBottom: 20 }}>Your Cart</p>
+        <div style={{ display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0 }}>
+            {/* Header */}
+            <div style={{ padding: '20px 18px', flexShrink: 0, borderBottom: `1px solid ${C.border}` }}>
+                <button
+                    onClick={onBack}
+                    style={{ background: 'none', border: 'none', fontSize: 14, fontWeight: 600, color: C.textMid, cursor: 'pointer', fontFamily: 'inherit', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 6 }}
+                >
+                    <ChevronLeft size={18} color={C.textMid} strokeWidth={2.2} /> Back
+                </button>
+                <p style={{ fontSize: 24, fontWeight: 800, color: C.text, letterSpacing: '-0.7px' }}>Your Cart</p>
+            </div>
 
-            {totalQty === 0 ? (
-                <div style={{ textAlign: 'center', padding: '60px 0' }}>
-                    <div style={{ width: 72, height: 72, background: '#E2F5EA', borderRadius: 24, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
-                        <ShoppingCart size={32} color={C.primary} strokeWidth={2} />
-                    </div>
-                    <p style={{ fontSize: 16, fontWeight: 700, color: C.text }}>Cart is empty</p>
-                    <p style={{ fontSize: 13, color: C.textLight, marginTop: 6 }}>Browse and add products</p>
+            {/* Scrollable content area */}
+            <div style={{ flex: 1, overflowY: 'auto', overflowX: 'hidden', WebkitOverflowScrolling: 'touch', minHeight: 0, overscrollBehaviorY: 'contain' }}>
+                <div style={{ padding: '20px 18px' }}>
+                    {totalQty === 0 ? (
+                        <div style={{ textAlign: 'center', padding: '60px 20px' }}>
+                            <div style={{ width: 72, height: 72, background: '#E2F5EA', borderRadius: 24, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+                                <ShoppingCart size={32} color={C.primary} strokeWidth={2} />
+                            </div>
+                            <p style={{ fontSize: 16, fontWeight: 700, color: C.text }}>Cart is empty</p>
+                            <p style={{ fontSize: 13, color: C.textLight, marginTop: 6 }}>Browse and add products</p>
+                        </div>
+                    ) : (
+                        <>
+                            {Object.entries(cart).map(([id, _q]) => {
+                                const p = PRODUCTS.find(x => x.id === +id);
+                                if (!p) return null;
+                                return <ListCard key={id} p={p} cart={cart} addToCart={addToCart} dec={dec} onOpen={() => { }} />;
+                            })}
+                        </>
+                    )}
                 </div>
-            ) : (
-                <>
-                    {Object.entries(cart).map(([id, _q]) => {
-                        const p = PRODUCTS.find(x => x.id === +id);
-                        if (!p) return null;
-                        return <ListCard key={id} p={p} cart={cart} addToCart={addToCart} dec={dec} onOpen={() => { }} />;
-                    })}
-                    <div style={{ background: C.card, borderRadius: 18, padding: '16px 18px', marginTop: 8, border: `1px solid ${C.border}` }}>
+            </div>
+
+            {/* Fixed footer with total and order button */}
+            {totalQty > 0 && (
+                <div style={{
+                    background: '#fff',
+                    borderTop: `1px solid ${C.border}`,
+                    padding: '16px 18px',
+                    flexShrink: 0,
+                    boxShadow: '0 -4px 20px rgba(0,0,0,.06)',
+                }}>
+                    <div style={{ background: C.card, borderRadius: 18, padding: '16px 18px', marginBottom: 14, border: `1px solid ${C.border}` }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: C.textLight, marginBottom: 10 }}>
                             <span>Subtotal ({totalQty} items)</span>
                             <span style={{ color: C.text, fontWeight: 600 }}>₹{totalPrice.toLocaleString('en-IN')}</span>
@@ -56,7 +76,16 @@ export default function CartScreen({ cart, addToCart, dec, totalPrice, totalQty,
                             width: '100%', background: C.primary, color: '#fff', border: 'none', borderRadius: 18,
                             padding: '17px 20px', fontSize: 15, fontWeight: 800, cursor: 'pointer',
                             fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                            marginTop: 16, boxShadow: `0 8px 28px rgba(26,158,71,.35)`,
+                            boxShadow: `0 8px 28px rgba(26,158,71,.35)`,
+                            transition: 'all 0.2s ease',
+                        }}
+                        onMouseEnter={(e) => {
+                            (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 12px 36px rgba(26,158,71,.45)';
+                            (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)';
+                        }}
+                        onMouseLeave={(e) => {
+                            (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 8px 28px rgba(26,158,71,.35)';
+                            (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)';
                         }}
                     >
                         <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -66,7 +95,7 @@ export default function CartScreen({ cart, addToCart, dec, totalPrice, totalQty,
                             ₹{totalPrice.toLocaleString('en-IN')} <ArrowRight size={13} color="#fff" style={{ display: 'inline', marginLeft: 2, verticalAlign: 'middle' }} />
                         </span>
                     </button>
-                </>
+                </div>
             )}
         </div>
     );

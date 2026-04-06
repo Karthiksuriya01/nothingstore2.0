@@ -66,7 +66,7 @@ function AppContent() {
   const catProds = activeCat ? PRODUCTS.filter(p => p.cat === activeCat) : [];
   const searchRes = search.length > 1 ? PRODUCTS.filter(p => p.name.toLowerCase().includes(search.toLowerCase())) : [];
   const isProd = screen === 'product';
-  const isFullHeightScreen = screen === 'product' || screen === 'cat';
+  const isFullHeightScreen = screen === 'product' || screen === 'cat' || screen === 'cart';
 
   return (
     <div style={{
@@ -90,13 +90,13 @@ function AppContent() {
         />
       )}
 
-      {/* SCROLLABLE CONTENT AREA */}
       <div style={isFullHeightScreen ? {
         flex: 1,
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',     /* Screen handles its own scroll */
         minHeight: 0,
+        paddingBottom: !isProd ? (totalQty > 0 && screen !== 'cart' ? 140 : 80) : 0,
       } : {
         flex: 1,
         overflowY: 'auto',
