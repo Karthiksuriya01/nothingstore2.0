@@ -62,12 +62,11 @@ export default function CartScreen({ cart, addToCart, dec, totalPrice, totalQty,
                     boxShadow: '0 -4px 20px rgba(0,0,0,.06)',
                 }}>
                     <div style={{ background: C.card, borderRadius: 18, padding: '16px 18px', marginBottom: 14, border: `1px solid ${C.border}` }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: C.textLight, marginBottom: 10 }}>
-                            <span>Subtotal ({totalQty} items)</span>
-                            <span style={{ color: C.text, fontWeight: 600 }}>₹{totalPrice.toLocaleString('en-IN')}</span>
-                        </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 17, fontWeight: 800, color: C.primary, borderTop: `1px solid ${C.border}`, paddingTop: 12, letterSpacing: '-0.4px' }}>
-                            <span>Total</span><span>₹{totalPrice.toLocaleString('en-IN')}</span>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span style={{ fontSize: 15, color: C.text, fontWeight: 600 }}>Total ({totalQty} item{totalQty !== 1 ? 's' : ''})</span>
+                            <span style={{ fontSize: 18, fontWeight: 800, color: C.primary, letterSpacing: '-0.4px' }}>
+                                ₹{totalPrice.toLocaleString('en-IN')}
+                            </span>
                         </div>
                     </div>
                     <button
